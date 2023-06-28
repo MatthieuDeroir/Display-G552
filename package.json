@@ -1,5 +1,18 @@
 {
-  "dependencies": {
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
     "electron": "^25.2.0"
+  },
+  "dependencies": {
+    "bulma": "^0.9.4"
   }
 }
