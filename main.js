@@ -1,11 +1,12 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const config = require('./config.js')
 
 function createWindows () {
     // Create the score window.
     let mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 960,
+        width: config.display.width,
+        height: config.display.height,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
