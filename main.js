@@ -1,44 +1,84 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+const config = require('./config.js')
+const net = require('net');
 
-let mainWindow
+const socketPath = '/tmp/_sysmes.sock';
 
-function createWindow () {
-    mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false,
-            enableRemoteModule: true
-        },
-        show: false // Ne pas afficher la fenêtre lors du démarrage
-    })
+require('electron-reload')(__dirname, {
+    electron: require(`${__dirname}/node_modules/electron`)
+});
 
-    mainWindow.loadFile(path.join(__dirname, 'index.html'))
+let mainWindow;
 
-    // Ouvrez les outils de développement de Chrome.
-    mainWindow.webContents.openDevTools()
-
-    mainWindow.on('closed', function () {
-        mainWindow = null
-    })
+function handleData(data) {
+    if (data.mode === 'scoring') {
+        mainWindow.webContents.send('server-data', data);
+    } else if (data.mode === 'media') {
+        mainWindow.webContents.send('server-data', data);
+    } else {
+        console.warn('Received unknown data mode:', data.mode);
+    }
 }
 
-app.on('ready', createWindow)
+function createWindows() {
+    mainWindow = new BrowserWindow({
+        width: config.display.width,
+        height: config.display.height,
+        x: 0,
+        y: 0,
 
-app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') app.quit()
+        frame: false,
+
+
+        webPreferences: {
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            contextIsolation: false
+        }
+
+
+    })
+    mainWindow.webContents.openDevTools()
+
+    mainWindow.loadFile('dist/index.html')
+    mainWindow.setMenu(null)
+    mainWindow.setAlwaysOnTop(true, 'screen-saver');
+
+    function connectToServer() {
+        const client = net.createConnection({path: socketPath}, () => {
+            console.log('Connected to server!');
+            client.write('Hello from client!\n');
+        });
+
+        client.on('data', (data) => {
+            try {
+                const jsonData = JSON.parse(data);
+                handleData(jsonData);
+            } catch (err) {
+                console.error('Failed to parse JSON data:', err);
+            }
+        });
+
+        client.on('end', () => {
+            console.log('Disconnected from server');
+            setTimeout(connectToServer, 5000);
+        });
+    }
+
+    connectToServer();
+}
+
+app.whenReady().then(createWindows)
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
 })
 
-app.on('activate', function () {
-    if (mainWindow === null) createWindow()
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindows()
+    }
 })
-
-ipcMain.on('control-message', (event, arg) => {
-    // Répondre à un message de contrôle de l'application React
-    // Vous pouvez utiliser `mainWindow.webContents.send(...)` pour envoyer
-    // des données à l'afficheur de l'application Electron.
-    console.log(arg);
-})
-
