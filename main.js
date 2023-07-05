@@ -43,7 +43,7 @@ function createWindows() {
 
     mainWindow.loadFile('dist/index.html')
     mainWindow.setMenu(null)
-    mainWindow.setAlwaysOnTop(true, 'screen-saver');
+    // mainWindow.setAlwaysOnTop(true, 'screen-saver');
 
     function connectToServer() {
         const client = net.createConnection({path: socketPath}, () => {
