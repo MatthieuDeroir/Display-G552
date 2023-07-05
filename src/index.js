@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import ScoringMode from './components/ScoringMode';
-import MediaMode from './components/MediaMode';
+import ScoringMode from './Components/ScoringMode';
+import MediaMode from './Components/MediaMode';
 import config from '../config.js';
 
 const { ipcRenderer } = window.require('electron');
