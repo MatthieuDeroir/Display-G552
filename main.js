@@ -43,30 +43,41 @@ function createWindows() {
 
     mainWindow.loadFile('dist/index.html')
     mainWindow.setMenu(null)
-    // mainWindow.setAlwaysOnTop(true, 'screen-saver');
+    mainWindow.setAlwaysOnTop(true, 'screen-saver');
 
     function connectToServer() {
-        const client = net.createConnection({path: socketPath}, () => {
-            console.log('Connected to server!');
-            client.write('Hello from client!\n');
-        });
+        try {
+            const client = net.createConnection({path: socketPath}, () => {
+                console.log('Connected to server!');
+                client.write('Hello from client!\n');
+            });
 
-        client.on('data', (data) => {
-            try {
-                const jsonData = JSON.parse(data);
-                handleData(jsonData);
-            } catch (err) {
-                console.error('Failed to parse JSON data:', err);
-            }
-        });
+            client.on('data', (data) => {
+                try {
+                    const jsonData = JSON.parse(data);
+                    handleData(jsonData);
+                } catch (err) {
+                    console.error('Failed to parse JSON data:', err);
+                }
+            });
 
-        client.on('end', () => {
-            console.log('Disconnected from server');
+            client.on('error', (err) => {
+                console.error('Error occurred with the client socket:', err);
+                setTimeout(connectToServer, 5000);
+            });
+
+            client.on('end', () => {
+                console.log('Disconnected from server');
+                setTimeout(connectToServer, 5000);
+            });
+        } catch (err) {
+            console.error('Failed to create client connection:', err);
             setTimeout(connectToServer, 5000);
-        });
+        }
     }
 
     connectToServer();
+
 }
 
 app.whenReady().then(createWindows)
