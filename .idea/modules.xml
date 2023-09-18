@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Display.iml" filepath="$PROJECT_DIR$/.idea/Display.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../G552_frontend/.idea/G552_frontend.iml" filepath="$PROJECT_DIR$/../G552_frontend/.idea/G552_frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../api552/.idea/api552.iml" filepath="$PROJECT_DIR$/../api552/.idea/api552.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../uploads/.idea/uploads.iml" filepath="$PROJECT_DIR$/../uploads/.idea/uploads.iml" />
     </modules>
   </component>
 </project>

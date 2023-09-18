@@ -1,38 +1,47 @@
 import React from 'react';
-import './Sport.css'; // CSS import
+import './TableTennis.css';
 
-const TableTennis = ({ gsi }) => {
+// Separate Service component
+const ServiceIndicator = ({ isServing }) => {
+    if (!isServing) return null;
+    return <div className="team-service">•</div>;
+};
+
+const Team = ({ name, teamData }) => {
+    const formatPointsBySet = (team) => {
+        if (!team || !team.PointsInSet) return 'N/A';
+        return Object.values(team.PointsInSet).join(' - ');
+    };
+
+    const getValue = (value, fallback = 'N/A') => value || value === 0 ? value : fallback;
+
+    return (
+        <div className="team">
+            <div className="team-header">
+                <h2 className="team-name">{name}</h2>
+                <ServiceIndicator isServing={teamData.Service} />
+            </div>
+            <p className="team-score">{getValue(teamData.TotalPoints)}</p>
+            <p className="team-sets-won">Sets: {getValue(teamData.SetsWon)}</p>
+            <p className="team-points-by-set">{formatPointsBySet(teamData)}</p>
+            {teamData.Winner && <p className="team-winner">Winner!</p>}
+        </div>
+    );
+};
+
+const TableTennis = ({ gameState }) => {
+    const { Home, Guest, Chrono } = gameState;
+
     return (
         <div className="table-tennis-container">
             <h1>Table Tennis Match</h1>
             <div className="score-container">
-                <div className="team">
-                    <h2 className="team-name">Home</h2>
-                    <p className="team-score">Home_TotalPoints</p>
-                    <p className="team-sets-won">Home_SetsWon</p>
-                    <p className="team-points-by-set">Home_PointsBySet</p>
-                    <p className="team-service">Home_Service</p>
-                    <p className="team-winner">Home_Winner</p>
-                </div>
-                <div className="team">
-                    <h2 className="team-name">Guest</h2>
-                    <p className="team-score">Guest_TotalPoints</p>
-                    <p className="team-sets-won">Guest_SetsWon</p>
-                    <p className="team-points-by-set">Guest_PointsBySet</p>
-                    <p className="team-service">Guest_Service</p>
-                    <p className="team-winner">Guest_Winner</p>
-                </div>
+                <Team name="Home" teamData={Home} />
+                <div className="divider"></div>
+                <Team name="Guest" teamData={Guest} />
             </div>
             <div className="chrono-container">
-                <p className="chrono">Chrono</p>
-            </div>
-            <div className="timer-status-container">
-                <p className="timer-status">Timer_Status</p>
-                <p className="led">LED</p>
-            </div>
-            <div className="display-container">
-                <p className="clock-display">Clock_Display</p>
-                <p className="chrono-display">Chrono_Display</p>
+                <p className="chrono">{Chrono.Value}</p>
             </div>
         </div>
     );

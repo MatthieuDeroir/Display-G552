@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import ScoringMode from './Components/ScoringMode';
 import MediaMode from './Components/MediaMode';
 import config from '../config.js';
 
 const { ipcRenderer } = window.require('electron');
 
+const root = document.getElementById('root');
+const appRoot = ReactDOM.createRoot(root);
+
 const App = () => {
-    const [mode, setMode] = useState(null);
-    const [gameState, setGameState] = useState(null);
-    const [mediaState, setMediaState] = useState(null);
+    const [mode, setMode] = useState(''); // initialized to 'scoring'
+    const [gameState, setGameState] = useState({});
+    const [mediaState, setMediaState] = useState([]);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--maxWidth', config.display.width);
         document.documentElement.style.setProperty('--maxHeight', config.display.height);
+        console.log('App mounted');
         ipcRenderer.on('server-data', (event, data) => {
             console.log('!Received data:', data);
             if (data.mode === 'scoring') {
                 setMode('scoring');
-                setGameState(data);
+                setGameState(data || {});  // Assuming the data for scoring mode contains a 'gameState' property
             } else if (data.mode === 'media') {
                 setMode('media');
                 // if data.medias is not an array, wrap it in one
@@ -27,19 +31,25 @@ const App = () => {
                 setMediaState(mediaArray);
             }
         });
+        ipcRenderer.on('message' , (event, message) => {
+            console.log('Received message:', message);
+        });
 
-        return () => {
-            ipcRenderer.removeAllListeners('server-data');
-        };
+
+        // return () => {
+        //     ipcRenderer.removeAllListeners('server-data');
+        // };
     }, []);
-
 
     return (
         <div>
-            {mode === 'scoring' && <ScoringMode data={gameState} />}
+            {mode === 'scoring' && <ScoringMode gameState={gameState} />}
             {mode === 'media' && <MediaMode mediaState={mediaState} />}
+            {mode === '' && <div>Waiting for data...</div>}
         </div>
     );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+appRoot.render(<App />);
