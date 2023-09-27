@@ -2,27 +2,6 @@ import React from 'react';
 import './StandardDisplay.css';
 
 const StandardDisplay = ({ gameState }) => {
-    const placeholderState = {
-        Home: {
-            TeamName: "HOME",
-            TotalPoints: "12",
-            Timeout: { Count: 3 },
-            Possession: true,
-            Service: true,
-            Exclusion: { Timer: "2:00" }
-        },
-        Guest: {
-            TeamName: "GUEST",
-            TotalPoints: "10",
-            Timeout: { Count: 2 },
-            Possession: false,
-            Service: false,
-            Exclusion: { Timer: "1:00" }
-        },
-        Timer: { Value: "10:00" },
-        Period: 2,
-        Set: null
-    };
 
     const {
         Home,
@@ -30,7 +9,7 @@ const StandardDisplay = ({ gameState }) => {
         Timer,
         Period,
         Set,
-    } = placeholderState;
+    } = gameState;
 
     const periodOrSet = Period || Set;
 
