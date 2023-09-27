@@ -17,7 +17,7 @@ const StandardDisplay = ({ gameState }) => {
         <div className="standard-container">
             <div className="team home">
                 <h2 className="team-name">{Home.TeamName}</h2>
-                <p className="team-score">{Home.Points}</p>
+                <p className="team-score">{Home.TotalPoints}</p>
                 <div className="team-timeouts">
                     {Array.from({ length: Home.Timeout.Count }).map((_, index) => (
                         <span key={index} className="timeout-circle"></span>
@@ -37,7 +37,7 @@ const StandardDisplay = ({ gameState }) => {
 
             <div className="team guest">
                 <h2 className="team-name">{Guest.TeamName}</h2>
-                <p className="team-score">{Guest.Points}</p>
+                <p className="team-score">{Guest.TotalPoints}</p>
                 <div className="team-timeouts">
                     {Array.from({ length: Guest.Timeout.Count }).map((_, index) => (
                         <span key={index} className="timeout-circle"></span>
