@@ -37,7 +37,7 @@ const ScoringMode = ({ gameState }) => {
         }
     }, [gameState]);
 
-    const CurrentSportComponent = StandardDisplay || (() => <div style={{ color: "black" }}>Waiting for data...ScoringMode</div>);
+    const CurrentSportComponent = StandardDisplay || (() => <div style={{ backgroundColor: "black", color: "white" }}>Waiting for data...ScoringMode</div>);
 
     return (
         <div className="container">
