@@ -14,7 +14,7 @@ let mainWindow;
 function handleData(data) {
     if (mainWindow && !mainWindow.isDestroyed()) {
         if (data.Mode === 9) {
-            console.log('data.gameState.mode ===', data.gameState.mode, ' => Scoring data are handled');
+            console.log('data.gameState.mode ===', data.Mode, ' => Scoring data are handled');
             mainWindow.webContents.send('server-data', data);
             console.log('Sent from electron to display data:', data);
         } else if (data.mode === null) {
