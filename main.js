@@ -16,7 +16,7 @@ function handleData(data) {
         if (data.mode === 'scoring') {
             console.log('Score data are handled');
             mainWindow.webContents.send('server-data', data);
-            console.log('Sent data:', data);
+            console.log('Sent from electron to display data:', data);
         } else if (data.mode === 'media') {
             console.log('Media data are handled');
             mainWindow.webContents.send('server-data', data);
@@ -62,7 +62,7 @@ function createWindows() {
                 dataBuffer += data.toString();
                 if (dataBuffer.endsWith('\n')) {
                     try {
-                        console.log('Received raw data:', dataBuffer);
+                        // console.log('Received raw data:', dataBuffer);
                         const jsonData = JSON.parse(dataBuffer);
                         handleData(jsonData);
                         client.write('Display has successfully received data!');
