@@ -16,7 +16,13 @@ function handleData(data) {
         if (data.Mode === 9) {
             console.log('data.gameState.mode ===', data.Mode, ' => Scoring data are handled');
             mainWindow.webContents.send('server-data', data);
-            console.log('Sent from electron to display data:', data);
+            console.log('Sent from electron to display data:');
+            console.log("Mode: ", data.Mode);
+            console.log("Timer: ", data.Timer.Value);
+            console.log("Home: ", data.Home.TeamName);
+            console.log("Points: ", data.Home.Points);
+            console.log("Guest: ", data.Guest.TeamName);
+            console.log("Points: ", data.Guest.Points);
         } else if (data.mode === null) {
             console.warn('Received unknown data mode:', data.Mode);
             mainWindow.webContents.send('server-data', data);
