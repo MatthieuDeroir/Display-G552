@@ -75,8 +75,8 @@ function createWindows() {
             client.on('data', (data) => {
                 dataBuffer += data.toString();
                 if (dataBuffer.endsWith('\n')) {
+                    console.log("Raw Data:", dataBuffer); // Log raw data here
                     try {
-                        // console.log('Received raw data:', dataBuffer);
                         const jsonData = JSON.parse(data.toString());
                         handleData(jsonData);
                         client.write('Display has successfully received data!');
@@ -86,6 +86,7 @@ function createWindows() {
                     }
                 }
             });
+
 
             client.on('error', (err) => {
                 console.error('Error occurred with the client socket:', err);
@@ -104,6 +105,7 @@ function createWindows() {
 
     connectToServer();
 }
+app.disableHardwareAcceleration();
 
 app.whenReady().then(createWindows);
 
