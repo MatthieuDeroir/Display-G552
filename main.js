@@ -2,6 +2,7 @@ const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 const config = require('./config.js');
 const net = require('net');
+const { ipcRenderer } = window.require('electron');
 
 const socketPath = '/tmp/_sysmes.sock';
 
@@ -14,18 +15,23 @@ let mainWindow;
 function handleData(data) {
     if (mainWindow && !mainWindow.isDestroyed()) {
         if (data.Mode === 9) {
-            console.log('data.gameState.mode ===', data.Mode, ' => Scoring data are handled');
+            // console.log('data.gameState.mode ===', data.Mode, ' => Scoring data are handled');
+            // console.log('Sent from electron to display data:');
+            // console.log("Mode: ", data.Mode);
+            // console.log("Period: ", data.Period);
+            // console.log("Timer: ", data.Timer.Value);
+            // console.log("Home: ", data.Home.TeamName);
+            // console.log("Timeouts: ", data.Home.Timeout.Counts);
+            // console.log("Points: ", data.Home.Points);
+            // console.log("Guest: ", data.Guest.TeamName);
+            // console.log("Points: ", data.Guest.Points);
+            // console.log("Timeouts: ", data.Guest.Timeout.Counts);
+
             mainWindow.webContents.send('server-data', data);
-            console.log('Sent from electron to display data:');
-            console.log("Mode: ", data.Mode);
-            console.log("Period: ", data.Period);
-            console.log("Timer: ", data.Timer.Value);
-            console.log("Home: ", data.Home.TeamName);
-            console.log("Timeouts: ", data.Home.Timeout.Counts);
-            console.log("Points: ", data.Home.Points);
-            console.log("Guest: ", data.Guest.TeamName);
-            console.log("Points: ", data.Guest.Points);
-            console.log("Timeouts: ", data.Guest.Timeout.Counts);
+
+            ipcRenderer.send('server-data', data);
+
+
 
         } else if (data.Mode === null) {
             console.warn('Received unknown data mode:', data.Mode);

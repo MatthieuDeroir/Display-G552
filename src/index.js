@@ -31,14 +31,15 @@ const App = () => {
                 setMediaState(mediaArray);
             }
         });
+
         ipcRenderer.on('message' , (event, message) => {
             console.log('Received message:', message);
         });
 
 
-        // return () => {
-        //     ipcRenderer.removeAllListeners('server-data');
-        // };
+        return () => {
+            ipcRenderer.removeAllListeners('server-data');
+        };
     }, []);
 
     return (
