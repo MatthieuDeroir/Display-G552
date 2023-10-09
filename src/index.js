@@ -20,10 +20,10 @@ const App = () => {
         console.log('App mounted');
         ipcRenderer.on('server-data', (event, data) => {
             console.log('!Received data:', data, event);
-            if (data.mode === 'scoring') {
+            if (data.Mode === 9) {
                 setMode('scoring');
                 setGameState(data || {});  // Assuming the data for scoring mode contains a 'gameState' property
-            } else if (data.mode === 'media') {
+            } else {
                 setMode('media');
                 // if data.medias is not an array, wrap it in one
                 const mediaArray = Array.isArray(data.medias) ? data.medias : [data.medias];
