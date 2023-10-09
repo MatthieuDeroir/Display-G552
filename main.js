@@ -18,12 +18,16 @@ function handleData(data) {
             mainWindow.webContents.send('server-data', data);
             console.log('Sent from electron to display data:');
             console.log("Mode: ", data.Mode);
+            console.log("Period: ", data.Period);
             console.log("Timer: ", data.Timer.Value);
             console.log("Home: ", data.Home.TeamName);
+            console.log("Timeouts: ", data.Home.Timeout.Counts);
             console.log("Points: ", data.Home.Points);
             console.log("Guest: ", data.Guest.TeamName);
             console.log("Points: ", data.Guest.Points);
-        } else if (data.mode === null) {
+            console.log("Timeouts: ", data.Guest.Timeout.Counts);
+
+        } else if (data.Mode === null) {
             console.warn('Received unknown data mode:', data.Mode);
             mainWindow.webContents.send('server-data', data);
         }
