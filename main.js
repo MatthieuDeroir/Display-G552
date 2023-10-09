@@ -2,7 +2,6 @@ const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 const config = require('./config.js');
 const net = require('net');
-const { ipcRenderer } = window.require('electron');
 
 const socketPath = '/tmp/_sysmes.sock';
 
@@ -28,10 +27,6 @@ function handleData(data) {
             // console.log("Timeouts: ", data.Guest.Timeout.Counts);
 
             mainWindow.webContents.send('server-data', data);
-
-            ipcRenderer.send('server-data', data);
-
-
 
         } else if (data.Mode === null) {
             console.warn('Received unknown data mode:', data.Mode);
