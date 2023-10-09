@@ -63,10 +63,11 @@ function createWindows() {
 
             client.on('data', (data) => {
                 dataBuffer += data.toString();
+                console.log('Received data:', dataBuffer)
                 if (dataBuffer.endsWith('\n')) {
                     try {
                         // console.log('Received raw data:', dataBuffer);
-                        const jsonData = JSON.parse(dataBuffer.toString());
+                        const jsonData = JSON.parse(dataBuffer);
                         handleData(jsonData);
                         client.write('Display has successfully received data!');
                         dataBuffer = '';
