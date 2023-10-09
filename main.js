@@ -13,15 +13,18 @@ let mainWindow;
 
 function handleData(data) {
     if (mainWindow && !mainWindow.isDestroyed()) {
-        if (data.mode === 'scoring') {
-            console.log('Score data are handled');
+        if (data.mode === 9) {
+            console.log('data.gameState.mode ===', data.gameState.mode, ' => Scoring data are handled');
             mainWindow.webContents.send('server-data', data);
             console.log('Sent from electron to display data:', data);
-        } else if (data.mode === 'media') {
+        } else if (data.mode === null) {
+            console.warn('Received unknown data mode:', data.mode);
+            mainWindow.webContents.send('server-data', data);
+        }
+        else {
+            console.log('data.gameState.mode ===', data.gameState.mode, ' => Media data are handled');
             console.log('Media data are handled');
             mainWindow.webContents.send('server-data', data);
-        } else {
-            console.warn('Received unknown data mode:', data.mode);
         }
     }
 }
