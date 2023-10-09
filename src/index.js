@@ -19,7 +19,7 @@ const App = () => {
         document.documentElement.style.setProperty('--maxHeight', config.display.height);
         console.log('App mounted');
         ipcRenderer.on('server-data', (event, data) => {
-            console.log('!Received data:', data);
+            console.log('!Received data:', data, event);
             if (data.mode === 'scoring') {
                 setMode('scoring');
                 setGameState(data || {});  // Assuming the data for scoring mode contains a 'gameState' property
