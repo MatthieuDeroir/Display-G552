@@ -45,7 +45,7 @@ const App = () => {
     return (
         <div>
             {mode === 'scoring' && <ScoringMode gameState={gameState} />}
-            {mode === 'media' && <MediaMode mediaState={mediaState} />}
+            {/*{mode === 'media' && <MediaMode mediaState={mediaState} />}*/}
             {mode === '' && <div>Waiting for data...</div>}
         </div>
     );
