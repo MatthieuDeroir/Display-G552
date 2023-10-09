@@ -18,11 +18,11 @@ function handleData(data) {
             mainWindow.webContents.send('server-data', data);
             console.log('Sent from electron to display data:', data);
         } else if (data.mode === null) {
-            console.warn('Received unknown data mode:', data.mode);
+            console.warn('Received unknown data mode:', data.Mode);
             mainWindow.webContents.send('server-data', data);
         }
         else {
-            console.log('data.gameState.mode ===', data.gameState.mode, ' => Media data are handled');
+            console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
             console.log('Media data are handled');
             mainWindow.webContents.send('server-data', data);
         }
@@ -63,7 +63,6 @@ function createWindows() {
 
             client.on('data', (data) => {
                 dataBuffer += data.toString();
-                console.log('Received data:', dataBuffer)
                 if (dataBuffer.endsWith('\n')) {
                     try {
                         // console.log('Received raw data:', dataBuffer);
