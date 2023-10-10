@@ -22,16 +22,16 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     //TODO: Save the data in the state and use it to display the data so it can be conserved when the data is updated
 
     const periodOrSet = gameState.Period || gameState.Set;
-    const timer = gameState.Timer ? gameState.Timer.Value : "00:00";
-    const possession = gameState.Possession ? gameState.Possession : "Home";
-    const homeTeamName = gameState.Home ? gameState.Home.TeamName : "Home";
-    const guestTeamName = gameState.Guest ? gameState.Guest.TeamName : "Guest";
-    const homeTeamScore = gameState.Home ? gameState.Home.Points : "0";
-    const guestTeamScore = gameState.Guest ? gameState.Guest.Points : "0";
-    const homeTeamTimeouts = gameState.Home ? gameState.Home.Timeout.Counts : "0";
-    const homeTeamTimeoutsTimer = gameState.Home ? gameState.Home.Timeout.Timer : "0";
-    const guestTeamTimeouts = gameState.Guest ? gameState.Guest.Timeout.Counts : "0";
-    const guestTeamTimeoutsTimer= gameState.Guest ? gameState.Guest.Timeout.Timer : "0";
+    const timer = gameState.Timer ? gameState.Timer.Value : savedGameState.Timer.Value;
+    const possession = gameState.Possession ? gameState.Possession : savedGameState.Possession;
+    const homeTeamName = gameState.Home ? gameState.Home.TeamName : savedGameState.Home.TeamName;
+    const guestTeamName = gameState.Guest ? gameState.Guest.TeamName : savedGameState.Guest.TeamName;
+    const homeTeamScore = gameState.Home ? gameState.Home.Points : savedGameState.Home.Points;
+    const guestTeamScore = gameState.Guest ? gameState.Guest.Points : savedGameState.Guest.Points;
+    const homeTeamTimeouts = gameState.Home ? gameState.Home.Timeout.Counts : savedGameState.Home.Timeout.Counts;
+    const homeTeamTimeoutsTimer = gameState.Home ? gameState.Home.Timeout.Timer : savedGameState.Home.Timeout.Timer;
+    const guestTeamTimeouts = gameState.Guest ? gameState.Guest.Timeout.Counts : savedGameState.Guest.Timeout.Counts;
+    const guestTeamTimeoutsTimer= gameState.Guest ? gameState.Guest.Timeout.Timer : savedGameState.Guest.Timeout.Timer;
 
 
 
