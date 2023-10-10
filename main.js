@@ -16,7 +16,7 @@ function handleData(data) {
         if (data.Mode === 9) {
 
             // console.log('data.gameState.mode ===', data.Mode, ' => Scoring data are handled');
-            // console.log('Sent from electron to display data:');
+            // console.log('Sent from electron to display gameState');
             // console.log("Mode: ", data.Mode);
             // console.log("Period: ", data.Period);
             // console.log("Timer: ", data.Timer.Value);
@@ -29,12 +29,13 @@ function handleData(data) {
 
             mainWindow.webContents.send('server-data', data);
 
-        } else if (data.Mode === null) {
+        } else if (data.Mode === null || data.Mode === undefined) {
             console.warn('Received unknown data mode:', data.Mode);
             mainWindow.webContents.send('server-data', data);
         }
         else {
-            console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
+            // console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
+            console.log(data);
             console.log('Media data are handled');
             mainWindow.webContents.send('server-data', data);
         }
@@ -76,14 +77,14 @@ function createWindows() {
             client.on('data', (data) => {
                 dataBuffer += data.toString();
                 if (dataBuffer.endsWith('\n')) {
-                    console.log("Raw Data:", dataBuffer); // Log raw data here
+                    console.log("Raw gameState", dataBuffer); // Log raw data here
                     try {
                         const jsonData = JSON.parse(data.toString());
                         handleData(jsonData);
                         client.write('Display has successfully received data!');
                         dataBuffer = '';
                     } catch (err) {
-                        console.error('Failed to parse JSON data:', err);
+                        console.error('Failed to parse JSON gameState', err);
                     }
                 }
             });
