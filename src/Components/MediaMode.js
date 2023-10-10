@@ -1,37 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import './Mode.css'
+import './Mode.css';
 
 const MediaMode = ({ mediaState }) => {
     const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
     useEffect(() => {
-        if (!mediaState || mediaState.length === 0) {
-            console.log(mediaState)
-            console.log("No media available")
+        if (!Array.isArray(mediaState) || mediaState.length === 0) {
+            console.log("No media available");
             return;
         }
 
+        const currentMedia = mediaState[currentMediaIndex];
+        const duration = (currentMedia && typeof currentMedia.duration === 'number') ? currentMedia.duration * 1000 : 5000; // Default to 5 seconds if not provided
+
         const timer = setTimeout(() => {
             setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length);
-        }, mediaState[currentMediaIndex].duration * 1000);
+        }, duration);
 
         return () => clearTimeout(timer);
     }, [currentMediaIndex, mediaState]);
 
-    if (!mediaState || mediaState.length === 0) {
-        return <div>No media available</div>;
+    if (!Array.isArray(mediaState) || mediaState.length === 0 || !mediaState[currentMediaIndex]) {
+        return <div style={{backgroundColor:"black", width:"100%", height:"100%"}}></div>;
     }
+
+    const currentMedia = mediaState[currentMediaIndex];
+    const isVideo = currentMedia.type === "video";
+    const mediaPath = currentMedia.path || ''; // Default to empty string if path is not provided
 
     return (
         <div className="container">
-            {mediaState && mediaState[currentMediaIndex].type === "video" ? (
+            {isVideo ? (
                 <video
-                    src={mediaState[currentMediaIndex].path}
+                    src={mediaPath}
                     autoPlay
-                    loop
+                    onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
                 />
             ) : (
-                <img src={mediaState && mediaState[currentMediaIndex].path} alt="Media content" />
+                <img src={"../../Frontend/public" + mediaPath} alt="Media content" />
             )}
         </div>
     );

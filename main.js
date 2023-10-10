@@ -14,8 +14,9 @@ let mainWindow;
 function handleData(data) {
     if (mainWindow && !mainWindow.isDestroyed()) {
         if (data.Mode === 9) {
+
             // console.log('data.gameState.mode ===', data.Mode, ' => Scoring data are handled');
-            // console.log('Sent from electron to display data:');
+            // console.log('Sent from electron to display gameState');
             // console.log("Mode: ", data.Mode);
             // console.log("Period: ", data.Period);
             // console.log("Timer: ", data.Timer.Value);
@@ -28,13 +29,36 @@ function handleData(data) {
 
             mainWindow.webContents.send('server-data', data);
 
-        } else if (data.Mode === null) {
-            console.warn('Received unknown data mode:', data.Mode);
+        } else if (data.Mode === 0) {
+            console.log("DEFENCE");
+        }else if (data.Mode === 1) {
+            console.log("DUNK");
+            console.log(data);
+        } else if (data.Mode === 2) {
+            console.log("NOISE")
+            console.log(data);
+        } else if (data.Mode === 10) {
+            console.log("1 points")
+        } else if (data.Mode === 11) {
+            console.log("2 points")
+        } else if (data.Mode === 12) {
+            console.log("3 points")
+        } else if (data.Mode === 13) {
+            console.log("Timeout")
+        } else if (data.Mode === 14) {
+            console.log("Foul")
+        } else if (data.Mode === 15) {
+            console.log("Prematch")
+        }
+        else if (data.Mode === null || data.Mode === undefined) {
+            // console.warn('Received unknown data mode:', data.Mode);
+            // console.log(data);
             mainWindow.webContents.send('server-data', data);
         }
         else {
-            console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
-            console.log('Media data are handled');
+            // console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
+            // console.log(data);
+            // console.log('Media data are handled');
             mainWindow.webContents.send('server-data', data);
         }
     }
@@ -75,17 +99,18 @@ function createWindows() {
             client.on('data', (data) => {
                 dataBuffer += data.toString();
                 if (dataBuffer.endsWith('\n')) {
+                    // console.log("Raw gameState", dataBuffer); // Log raw data here
                     try {
-                        // console.log('Received raw data:', dataBuffer);
                         const jsonData = JSON.parse(data.toString());
                         handleData(jsonData);
-                        client.write('Display has successfully received data!');
+                        // client.write('Display has successfully received data!');
                         dataBuffer = '';
                     } catch (err) {
-                        console.error('Failed to parse JSON data:', err);
+                        console.error('Failed to parse JSON gameState', err);
                     }
                 }
             });
+
 
             client.on('error', (err) => {
                 console.error('Error occurred with the client socket:', err);
@@ -104,6 +129,8 @@ function createWindows() {
 
     connectToServer();
 }
+
+app.disableHardwareAcceleration();
 
 app.whenReady().then(createWindows);
 
