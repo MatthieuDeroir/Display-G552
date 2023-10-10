@@ -4,11 +4,11 @@
     box-sizing: border-box;
 }
 
-:root {
+/* :root {
     --red: #fff;
     --green: #fff;
     --blue: #fff;
-}
+} */
 
 /* General container for each sport */
 .sport-container {

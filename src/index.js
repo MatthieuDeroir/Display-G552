@@ -43,11 +43,12 @@ const App = () => {
     }, []);
 
     return (
-        <div>
-            {mode === 'scoring' && <ScoringMode gameState={gameState} />}
+        < >
+           {/*  {mode === 'scoring' && <ScoringMode gameState={gameState} />}
             {mode === 'media' && <MediaMode mediaState={mediaState} />}
-            {mode === '' && <div>Waiting for data...</div>}
-        </div>
+            {mode === '' && <div>Waiting for data...</div>} */}
+            <ScoringMode gameState={gameState}/>
+        </>
     );
 };
 
