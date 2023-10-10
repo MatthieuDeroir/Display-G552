@@ -5,7 +5,7 @@ const MediaMode = ({ mediaState }) => {
     const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
     useEffect(() => {
-        mediaState[currentMediaIndex].path = "~/Server/Frontend/public" + mediaState[currentMediaIndex].path
+        mediaState[currentMediaIndex].path =  mediaState[currentMediaIndex].path
         console.log(mediaState[currentMediaIndex].path)
         if (!mediaState || mediaState.length === 0) {
             console.log(mediaState)
@@ -33,7 +33,7 @@ const MediaMode = ({ mediaState }) => {
                     loop
                 />
             ) : (
-                <img src={mediaState && mediaState[currentMediaIndex].path} alt="Media content" />
+                <img src={"~/Server/Frontend/public" + mediaState[currentMediaIndex].path} alt="Media content" />
             )}
         </div>
     );
