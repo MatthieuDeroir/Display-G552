@@ -31,6 +31,7 @@ function handleData(data) {
 
         } else if (data.Mode === null || data.Mode === undefined) {
             console.warn('Received unknown data mode:', data.Mode);
+            console.log(data);
             mainWindow.webContents.send('server-data', data);
         }
         else {
