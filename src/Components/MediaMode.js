@@ -34,7 +34,7 @@ const MediaMode = ({mediaState}) => {
         <div className="container">
             {isVideo ? (
                 <video
-                    style={{width: "100%", height: "100%"}}
+                    style={{maxWidth: "100%", maxHeight: "100%"}}
                     src={mediaPath}
                     autoPlay
                     preload={"auto"}
