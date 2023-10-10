@@ -78,7 +78,7 @@ const App = () => {
         < >
             {mode === 'scoring' && <ScoringMode gameState={gameState}/>}
             {mode === 'media' && <MediaMode mediaState={mediaState}/>}
-            {mode === '' && <div>Waiting for data...</div>} */}
+            {mode === '' && <div>Waiting for data...</div>}
         </>
     );
 };
