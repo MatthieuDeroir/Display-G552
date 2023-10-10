@@ -50,7 +50,7 @@ const App = () => {
                     default:
                         mediaArray = Array.isArray(data.medias) ? data.medias : [data.medias];
                 }
-                // console.log(mediaArray)
+                console.log(mediaArray)
                 setMediaState(mediaArray);
             }
         });
