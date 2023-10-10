@@ -1,6 +1,6 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
-const path = require('path')
-const config = require('./config.js')
+const {app, BrowserWindow, ipcMain} = require('electron');
+const path = require('path');
+const config = require('./config.js');
 const net = require('net');
 
 const socketPath = '/tmp/_sysmes.sock';
@@ -12,12 +12,55 @@ require('electron-reload')(__dirname, {
 let mainWindow;
 
 function handleData(data) {
-    if (data.mode === 'scoring') {
-        mainWindow.webContents.send('server-data', data);
-    } else if (data.mode === 'media') {
-        mainWindow.webContents.send('server-data', data);
-    } else {
-        console.warn('Received unknown data mode:', data.mode);
+    if (mainWindow && !mainWindow.isDestroyed()) {
+        if (data.Mode === 9) {
+
+            // console.log('data.gameState.mode ===', data.Mode, ' => Scoring data are handled');
+            // console.log('Sent from electron to display gameState');
+            // console.log("Mode: ", data.Mode);
+            // console.log("Period: ", data.Period);
+            // console.log("Timer: ", data.Timer.Value);
+            // console.log("Home: ", data.Home.TeamName);
+            // console.log("Timeouts: ", data.Home.Timeout.Counts);
+            // console.log("Points: ", data.Home.Points);
+            // console.log("Guest: ", data.Guest.TeamName);
+            // console.log("Points: ", data.Guest.Points);
+            // console.log("Timeouts: ", data.Guest.Timeout.Counts);
+
+            mainWindow.webContents.send('server-data', data);
+
+        } else if (data.Mode === 0) {
+            console.log("DEFENCE");
+        }else if (data.Mode === 1) {
+            console.log("DUNK");
+            console.log(data);
+        } else if (data.Mode === 2) {
+            console.log("NOISE")
+            console.log(data);
+        } else if (data.Mode === 10) {
+            console.log("1 points")
+        } else if (data.Mode === 11) {
+            console.log("2 points")
+        } else if (data.Mode === 12) {
+            console.log("3 points")
+        } else if (data.Mode === 13) {
+            console.log("Timeout")
+        } else if (data.Mode === 14) {
+            console.log("Foul")
+        } else if (data.Mode === 15) {
+            console.log("Prematch")
+        }
+        else if (data.Mode === null || data.Mode === undefined) {
+            // console.warn('Received unknown data mode:', data.Mode);
+            // console.log(data);
+            mainWindow.webContents.send('server-data', data);
+        }
+        else {
+            // console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
+            // console.log(data);
+            // console.log('Media data are handled');
+            mainWindow.webContents.send('server-data', data);
+        }
     }
 }
 
@@ -27,39 +70,47 @@ function createWindows() {
         height: config.display.height,
         x: 0,
         y: 0,
-
         frame: false,
-
-
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true,
             contextIsolation: false
         }
+    });
 
-
-    })
-    mainWindow.webContents.openDevTools()
-
-    mainWindow.loadFile('dist/index.html')
-    mainWindow.setMenu(null)
+    mainWindow.webContents.openDevTools();
+    mainWindow.loadFile('dist/index.html');
+    mainWindow.setMenu(null);
     mainWindow.setAlwaysOnTop(true, 'screen-saver');
+    mainWindow.webContents.on('did-finish-load', () => {
+        console.log('Main window loaded');
+        mainWindow.webContents.send('message', 'Hello second window!');
+    });
 
     function connectToServer() {
+        let dataBuffer = '';
+
         try {
             const client = net.createConnection({path: socketPath}, () => {
                 console.log('Connected to server!');
-                client.write('Hello from client!\n');
+                client.write('Display is connected! You can send scoring and medias.\n');
             });
 
             client.on('data', (data) => {
-                try {
-                    const jsonData = JSON.parse(data);
-                    handleData(jsonData);
-                } catch (err) {
-                    console.error('Failed to parse JSON data:', err);
+                dataBuffer += data.toString();
+                if (dataBuffer.endsWith('\n')) {
+                    // console.log("Raw gameState", dataBuffer); // Log raw data here
+                    try {
+                        const jsonData = JSON.parse(data.toString());
+                        handleData(jsonData);
+                        // client.write('Display has successfully received data!');
+                        dataBuffer = '';
+                    } catch (err) {
+                        console.error('Failed to parse JSON gameState', err);
+                    }
                 }
             });
+
 
             client.on('error', (err) => {
                 console.error('Error occurred with the client socket:', err);
@@ -77,19 +128,20 @@ function createWindows() {
     }
 
     connectToServer();
-
 }
 
-app.whenReady().then(createWindows)
+app.disableHardwareAcceleration();
+
+app.whenReady().then(createWindows);
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
-        app.quit()
+        app.quit();
     }
-})
+});
 
 app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-        createWindows()
+        createWindows();
     }
-})
+});

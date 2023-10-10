@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     TableTennis,
     Basketball,
@@ -9,36 +9,39 @@ import {
     Tennis,
     Hockey,
     Handball,
-    Boxing
+    Boxing,
+    StandardDisplay
 } from './Sports/';
-import './Mode.css'
+import './Mode.css';
 
-const ScoringMode = ({ data }) => {
-    const [minutes, setMinutes] = React.useState(0);
-    const [seconds, setSeconds] = React.useState(0);
-    const [sport, setSport] = React.useState('none');
+const SPORT_COMPONENT_MAP = {
+    'Table Tennis': TableTennis,
+    'Basketball': Basketball,
+    'Badminton': Badminton,
+    'Simple Timer': SimpleTimer,
+    'Soccer': Soccer,
+    'Volleyball': Volleyball,
+    'Tennis': Tennis,
+    'Hockey': Hockey,
+    'Handball': Handball,
+    'Boxing': Boxing
+};
+
+const ScoringMode = ({ gameState }) => {
+    const [sport, setSport] = useState('none');
 
     useEffect(() => {
-        if (data) {
-            setMinutes(Math.floor(data.gameState.chrono / 600))
-            setSeconds(Math.floor(data.gameState.chrono / 10) % 60)
-            setSport(data.gameState.sport)
+        console.log("ScoringMode gameState", gameState);
+        if (gameState && gameState.Sport) {
+            setSport(gameState.Sport);
         }
-    });
+    }, [gameState]);
+
+    const CurrentSportComponent = StandardDisplay || (() => <div style={{ backgroundColor: "black", color: "white" }}>Waiting for data...ScoringMode</div>);
 
     return (
         <div className="container">
-            {sport === 'table tennis' && <TableTennis />}
-            {sport === 'handball' && <Handball />}
-            {sport === 'badminton' && <Badminton />}
-            {sport === 'simple timer' && <SimpleTimer />}
-            {sport === 'basketball' && <Basketball data={data} />}
-            {sport === 'soccer' && <Soccer />}
-            {sport === 'volleyball' && <Volleyball />}
-            {sport === 'tennis' && <Tennis />}
-            {sport === 'hockey' && <Hockey />}
-            {sport === 'boxing' && <Boxing />}
-            {sport === '' && <div style={{color:"black"}}>Waiting for data...</div>}
+            <CurrentSportComponent gameState={gameState} />
         </div>
     );
 };

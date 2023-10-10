@@ -8,6 +8,7 @@ import TableTennis from './TableTennis';
 import Badminton from './Badminton';
 import SimpleTimer from './SimpleTimer';
 import Boxing from "./Boxing";
+import StandardDisplay from "./StandardDisplay";
 
 
 
@@ -21,5 +22,6 @@ export {
     TableTennis,
     Badminton,
     SimpleTimer,
-    Boxing
+    Boxing,
+    StandardDisplay
 }

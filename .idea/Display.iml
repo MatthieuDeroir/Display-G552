@@ -8,5 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="api552" />
+    <orderEntry type="module" module-name="G552_frontend" />
+    <orderEntry type="module" module-name="uploads" />
   </component>
 </module>

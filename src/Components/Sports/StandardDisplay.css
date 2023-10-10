@@ -1,0 +1,94 @@
+.standard-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Digital-7', sans-serif; /* This font is similar to digital LED, ensure to include it in your project */
+    background-color: #000;
+    color: #fff;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+.team {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-name {
+    font-size: 40px;
+    color: yellow;
+    margin-bottom: 20px;
+}
+
+.team-score {
+    font-size: 150px;
+    color: red;
+    margin-bottom: 40px;
+}
+
+.team-timeouts {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 20px;
+}
+
+.timeout-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: green;
+    margin: 0 5px;
+}
+
+.team-penalty-timer {
+    font-size: 35px;
+    color: yellow;
+    margin-top: 10px;
+}
+
+.center-section {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.period-set {
+    font-size: 40px;
+    color: green;
+    margin-bottom: 20px;
+}
+
+.timer {
+    font-size: 100px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.possession-service {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.possession-arrow {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    margin: 0 5px;
+}
+
+.possession-arrow.home {
+    border-bottom: 60px solid red;
+}
+
+.possession-arrow.guest {
+    border-top: 60px solid red;
+}
