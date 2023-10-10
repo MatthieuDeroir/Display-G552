@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import ScoringMode from './Components/ScoringMode';
 import MediaMode from './Components/MediaMode';
 import config from '../config.js';
 
-const { ipcRenderer } = window.require('electron');
+const {ipcRenderer} = window.require('electron');
 
 const root = document.getElementById('root');
 const appRoot = ReactDOM.createRoot(root);
@@ -32,7 +32,7 @@ const App = () => {
             }
         });
 
-        ipcRenderer.on('message' , (event, message) => {
+        ipcRenderer.on('message', (event, message) => {
             console.log('Received message:', message);
         });
 
@@ -44,14 +44,12 @@ const App = () => {
 
     return (
         < >
-           {/*  {mode === 'scoring' && <ScoringMode gameState={gameState} />}
-            {mode === 'media' && <MediaMode mediaState={mediaState} />}
+            {mode === 'scoring' && <ScoringMode gameState={gameState}/>}
+            {mode === 'media' && <MediaMode mediaState={mediaState}/>}
             {mode === '' && <div>Waiting for data...</div>} */}
-            <ScoringMode gameState={gameState}/>
         </>
     );
 };
 
 
-
-appRoot.render(<App />);
+appRoot.render(<App/>);

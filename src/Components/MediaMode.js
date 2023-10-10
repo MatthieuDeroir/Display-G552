@@ -37,6 +37,7 @@ const MediaMode = ({ mediaState }) => {
                     onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
                 />
             ) : (
+                {if ()}
                 <img src={"../../Frontend/public" + mediaPath} alt="Media content" />
             )}
         </div>
