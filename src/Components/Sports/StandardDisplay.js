@@ -17,8 +17,8 @@ const StandardDisplay = ({gameState}) => {
     return (
         <div class="scoreboard">
             <div class="team-display home">
-                <span class="team-score-display">{homeTeamName}</span>
-                <span class="team-name-display">{homeTeamScore}</span>
+                <span class="team-score-display">{homeTeamScore}</span>
+                <span class="team-name-display">{homeTeamName}</span>
 
                 <div className="timeout-left">
                   {
