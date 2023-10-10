@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './Mode.css';
 
-const MediaMode = ({ mediaState }) => {
+const MediaMode = ({mediaState}) => {
     const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const MediaMode = ({ mediaState }) => {
     }, [currentMediaIndex, mediaState]);
 
     if (!Array.isArray(mediaState) || mediaState.length === 0 || !mediaState[currentMediaIndex]) {
-        return <div style={{backgroundColor:"black", width:"100%", height:"100%"}}></div>;
+        return <div style={{backgroundColor: "black", width: "100%", height: "100%"}}></div>;
     }
 
     const currentMedia = mediaState[currentMediaIndex];
@@ -37,7 +37,10 @@ const MediaMode = ({ mediaState }) => {
                     onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
                 />
             ) : (
-                <img src={"../../Frontend/public" + mediaPath} alt="Media content" />
+                <>
+                    <img src={"../../Frontend/public" + mediaPath} alt="Media content"/>
+                    <img src{mediaPath} alt="Media content"/>
+                </>
             )}
         </div>
     );
