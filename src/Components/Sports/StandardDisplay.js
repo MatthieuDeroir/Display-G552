@@ -24,8 +24,8 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const possession = gameState?.Possession || savedGameState?.Possession || "";
     const homeTeamName = gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "";
     const guestTeamName = gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "";
-    const homeTeamScore = gameState?.Home?.Points || savedGameState?.Home?.Points || "";
-    const guestTeamScore = gameState?.Guest?.Points || savedGameState?.Guest?.Points || "";
+    const homeTeamScore = gameState?.Home?.Points.toString() || savedGameState?.Home?.Points.toString() || "";
+    const guestTeamScore = gameState?.Guest?.Points.toString() || savedGameState?.Guest?.Points.toString() || "";
     const homeTeamTimeouts = gameState?.Home?.Timeout?.Counts || savedGameState?.Home?.Timeout?.Counts || "";
     const homeTeamTimeoutsTimer = gameState?.Home?.Timeout?.Timer || savedGameState?.Home?.Timeout?.Timer || "";
     const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
