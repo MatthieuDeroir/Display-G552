@@ -20,6 +20,16 @@ body {
   color: #fff;
   align-self: flex-start;
 }
+.timeout-logo{
+  display: flex;
+}
+
+.logo-fiba {
+  margin-top: 30px;
+  margin-left: 15px;
+  width: 30px;
+  height: 100%;
+}
 
 .arrow-icon-left {
   clip-path: polygon(100% 0%, 82.4% 49.5%, 100% 100%, 0% 50%);
@@ -81,18 +91,20 @@ body {
 }
 .timeout-right {
   align-items: flex-end;
+  width: 50px;
 }
 .timeout-display {
   margin: 10px 0 10px 0;
   display: flex;
   flex-direction: column;
-  width: 80px;
+  
   height: 63px;
 
   justify-content: flex-start;
 }
 .timeout-left {
   align-items: flex-start;
+  width: 80px;
 }
 .circleIcon {
   border-radius: 10px;

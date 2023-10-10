@@ -49,7 +49,20 @@ const StandardDisplay = ({ gameState }) => {
           ) : null}
           {/*<div className="arrow-icon-right"></div>*/}
         </div>
-        <div class="timer">{timer}</div>
+        <div className="timeout-logo">
+        <img
+            className="logo-fiba"
+            style={{visibility: "hidden"}}
+            src="images/fiba_e&v_full_colour_port_Approved Equipment_vecto.jpg"
+            alt="logo"
+          />
+          <div class="timer">{timer}</div>
+          <img
+            className="logo-fiba"
+            src="images/fiba_e&v_full_colour_port_Approved Equipment_vecto.jpg"
+            alt="logo"
+          />
+        </div>
         <img
           className="logo"
           src="images/_Stramatel_Logo_FR_2.png"
@@ -66,6 +79,7 @@ const StandardDisplay = ({ gameState }) => {
             return <div className="circleIcon"></div>;
           })}
         </div>
+
         <div class="timer-timeout">{guestTeamTimeoutsTimer}</div>
       </div>
     </div>
