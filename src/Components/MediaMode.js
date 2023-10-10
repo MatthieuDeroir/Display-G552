@@ -33,7 +33,7 @@ const MediaMode = ({ mediaState }) => {
                     loop
                 />
             ) : (
-                <img src={"home/linaro/Server/Frontend/public" + mediaState[currentMediaIndex].path} alt="Media content" />
+                <img src={"../../Frontend/public" + mediaState[currentMediaIndex].path} alt="Media content" />
             )}
         </div>
     );
