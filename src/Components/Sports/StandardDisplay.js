@@ -3,6 +3,7 @@ import React from "react";
 import "./StandardDisplay.css";
 
 const StandardDisplay = ({gameState}) => {
+
     const periodOrSet = gameState.Period || gameState.Set;
     const timer = gameState.Timer ? gameState.Timer.Value : "00:00";
     const possession = gameState.Possession ? gameState.Possession : "Home";
@@ -11,7 +12,11 @@ const StandardDisplay = ({gameState}) => {
     const homeTeamScore = gameState.Home ? gameState.Home.Points : "0";
     const guestTeamScore = gameState.Guest ? gameState.Guest.Points : "0";
     const homeTeamTimeouts = gameState.Home ? gameState.Home.Timeout.Counts : "0";
+    const homeTeamTimeoutsTimer = gameState.Home ? gameState.Home.Timeout.Timer : "0";
     const guestTeamTimeouts = gameState.Guest ? gameState.Guest.Timeout.Counts : "0";
+    const guestTeamTimeoutsTimer= gameState.Guest ? gameState.Guest.Timeout.Timer : "0";
+
+
 
 
     return (
@@ -27,7 +32,7 @@ const StandardDisplay = ({gameState}) => {
                     })
                 }
                 </div>
-                <div class="timer-timeout">00:00</div>
+                <div class="timer-timeout">{homeTeamTimeoutsTimer}</div>
             </div>
 
             <div class="middle-section">
@@ -59,7 +64,7 @@ const StandardDisplay = ({gameState}) => {
                 })
                   }
                 </div>
-                <div class="timer-timeout">00:00</div>
+                <div class="timer-timeout">{guestTeamTimeoutsTimer}</div>
             </div>
         </div>
     );
