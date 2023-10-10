@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './Mode.css'
+import './Mode.css';
 
 const MediaMode = ({ mediaState }) => {
     const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
     useEffect(() => {
-        mediaState[currentMediaIndex].path =  mediaState[currentMediaIndex].path
-        console.log(mediaState[currentMediaIndex].path)
         if (!mediaState || mediaState.length === 0) {
-            console.log(mediaState)
-            console.log("No media available")
+            console.log("No media available");
             return;
         }
 
@@ -24,19 +21,23 @@ const MediaMode = ({ mediaState }) => {
         return <div>No media available</div>;
     }
 
+    const currentMedia = mediaState[currentMediaIndex];
+
     return (
         <div className="container">
-            {mediaState && mediaState[currentMediaIndex].type === "video" ? (
+            {currentMedia.type === "video" ? (
                 <video
-                    src={mediaState[currentMediaIndex].path}
+                    src={currentMedia.path}
                     autoPlay
-                    loop
+                    onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
                 />
             ) : (
                 <img src={"../../Frontend/public" + mediaState[currentMediaIndex].path} alt="Media content" />
+
             )}
         </div>
     );
 };
 
 export default MediaMode;
+
