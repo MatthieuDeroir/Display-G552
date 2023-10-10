@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./StandardDisplay.css";
 
-const StandardDisplay = ({gameState}) => {
+const StandardDisplay = ({gameState: incomingGameState}) => {
+
+    // Check for gameState in localStorage
+    const savedGameState = JSON.parse(localStorage.getItem('gameState'));
+    const [gameState, setGameState] = useState(incomingGameState || savedGameState || {});
+
+    useEffect(() => {
+        // Store gameState in localStorage whenever it changes
+        localStorage.setItem('gameState', JSON.stringify(gameState));
+    }, [gameState]);
+
+    useEffect(() => {
+        // Update local gameState with incomingGameState if not null
+        if (incomingGameState) {
+            setGameState(incomingGameState);
+        }
+    }, [incomingGameState]);
+    //TODO: Save the data in the state and use it to display the data so it can be conserved when the data is updated
 
     const periodOrSet = gameState.Period || gameState.Set;
     const timer = gameState.Timer ? gameState.Timer.Value : "00:00";
