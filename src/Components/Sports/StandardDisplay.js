@@ -22,7 +22,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     //TODO: Save the data in the state and use it to display the data so it can be conserved when the data is updated
 
     const periodOrSet = gameState.Period || gameState.Set;
-    const timer = gameState.Timer ? gameState.Timer.Value : savedGameState.Timer.Value;
+    const timer = gameState.Timer.Value ? gameState.Timer.Value : savedGameState.Timer.Value;
     const possession = gameState.Possession ? gameState.Possession : savedGameState.Possession;
     const homeTeamName = gameState.Home ? gameState.Home.TeamName : savedGameState.Home.TeamName;
     const guestTeamName = gameState.Guest ? gameState.Guest.TeamName : savedGameState.Guest.TeamName;
