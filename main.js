@@ -31,24 +31,32 @@ function handleData(data) {
 
         } else if (data.Mode === 0) {
             console.log("DEFENCE");
+            mainWindow.webContents.send('server-data', data);
         }else if (data.Mode === 1) {
             console.log("DUNK");
-            console.log(data);
+            mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 2) {
             console.log("NOISE")
-            console.log(data);
+            mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 10) {
             console.log("1 points")
+            mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 11) {
             console.log("2 points")
+            mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 12) {
             console.log("3 points")
+            mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 13) {
             console.log("Timeout")
+            mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 14) {
             console.log("Foul")
+            mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 15) {
             console.log("Prematch")
+            mainWindow.webContents.send('server-data', data);
+
         }
         else if (data.Mode === null || data.Mode === undefined) {
             // console.warn('Received unknown data mode:', data.Mode);
