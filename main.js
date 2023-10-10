@@ -51,14 +51,14 @@ function handleData(data) {
             console.log("Prematch")
         }
         else if (data.Mode === null || data.Mode === undefined) {
-            console.warn('Received unknown data mode:', data.Mode);
-            console.log(data);
+            // console.warn('Received unknown data mode:', data.Mode);
+            // console.log(data);
             mainWindow.webContents.send('server-data', data);
         }
         else {
             // console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
-            console.log(data);
-            console.log('Media data are handled');
+            // console.log(data);
+            // console.log('Media data are handled');
             mainWindow.webContents.send('server-data', data);
         }
     }
@@ -99,11 +99,11 @@ function createWindows() {
             client.on('data', (data) => {
                 dataBuffer += data.toString();
                 if (dataBuffer.endsWith('\n')) {
-                    console.log("Raw gameState", dataBuffer); // Log raw data here
+                    // console.log("Raw gameState", dataBuffer); // Log raw data here
                     try {
                         const jsonData = JSON.parse(data.toString());
                         handleData(jsonData);
-                        client.write('Display has successfully received data!');
+                        // client.write('Display has successfully received data!');
                         dataBuffer = '';
                     } catch (err) {
                         console.error('Failed to parse JSON gameState', err);

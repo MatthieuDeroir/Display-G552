@@ -19,7 +19,7 @@ const App = () => {
         document.documentElement.style.setProperty('--maxHeight', config.display.height);
         console.log('App mounted');
         ipcRenderer.on('server-data', (event, data) => {
-            console.log('!Received gameState', data, event);
+            // console.log('!Received gameState', data, event);
             if (data.Mode === 9) {
                 setMode('scoring');
                 setGameState(data || {});  // Assuming the data for scoring mode contains a 'gameState' property
@@ -27,7 +27,7 @@ const App = () => {
                 setMode('media');
                 // if data.medias is not an array, wrap it in one
                 const mediaArray = Array.isArray(data.medias) ? data.medias : [data.medias];
-                console.log(mediaArray)
+                // console.log(mediaArray)
                 setMediaState(mediaArray);
             }
         });
