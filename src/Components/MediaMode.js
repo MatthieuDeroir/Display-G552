@@ -5,6 +5,7 @@ const MediaMode = ({ mediaState }) => {
     const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
     useEffect(() => {
+        mediaState[currentMediaIndex].path = "/home/Server/Frontend/public/" + mediaState[currentMediaIndex].path
         if (!mediaState || mediaState.length === 0) {
             console.log(mediaState)
             console.log("No media available")
