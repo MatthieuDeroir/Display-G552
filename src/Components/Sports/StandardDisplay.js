@@ -47,7 +47,7 @@ const StandardDisplay = () => {
         <div class="timer">00:00</div>
         <img
           className="logo"
-          src="dist/images/_Stramatel_Logo_FR_2.png"
+          src="images/_Stramatel_Logo_FR_2.png"
           alt="logo"
         />
       </div>
