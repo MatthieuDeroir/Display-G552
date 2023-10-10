@@ -31,7 +31,7 @@ const ScoringMode = ({ gameState }) => {
     const [sport, setSport] = useState('none');
 
     useEffect(() => {
-        console.log("ScoringMode data:", gameState);
+        console.log("ScoringMode gameState", gameState);
         if (gameState && gameState.Sport) {
             setSport(gameState.Sport);
         }
