@@ -39,7 +39,7 @@ const MediaMode = ({mediaState}) => {
             ) : (
                 <>
                     <img src={"../../Frontend/public" + mediaPath} alt="Media content"/>
-                    <img src{mediaPath} alt="Media content"/>
+                    <img src={mediaPath} alt="Media content"/>
                 </>
             )}
         </div>
