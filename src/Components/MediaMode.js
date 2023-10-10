@@ -21,7 +21,7 @@ const MediaMode = ({ mediaState }) => {
     }, [currentMediaIndex, mediaState]);
 
     if (!Array.isArray(mediaState) || mediaState.length === 0 || !mediaState[currentMediaIndex]) {
-        return <div>No media available</div>;
+        return <div style={{backgroundColor:"black", width:"100%", height:"100%"}}></div>;
     }
 
     const currentMedia = mediaState[currentMediaIndex];
