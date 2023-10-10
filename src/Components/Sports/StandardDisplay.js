@@ -1,54 +1,70 @@
-import React from 'react';
-import './StandardDisplay.css';
+import React from "react";
 
-const StandardDisplay = ({ gameState }) => {
+import "./StandardDisplay.css";
 
-    if (!gameState) return <div className="standard-container">Game data not available</div>;
+const StandardDisplay = () => {
+  const gameState = {
+    Home: {
+      Points: 0,
+      TeamName: "Nom de l'équipe à domicile",
+      TimeoutCounts: 0,
+    },
+    Guest: {
+      Points: 0,
+      TeamName: "Nom de l'équipe invitée",
+      TimeoutCounts: 0,
+    },
+    Timer: {
+      value: "00:00",
+    },
+    Period: 1,
+    Set: 0,
+  };
 
-    const {
-        Home = {},
-        Guest = {},
-        Timer = {},
-        Period,
-        Set,
-    } = gameState;
+  const periodOrSet = gameState.Period || gameState.Set;
 
-    const periodOrSet = Period || Set || "N/A";
+  return (
+    <div class="scoreboard">
+      <div class="team-display home">
+        <span class="team-score-display">999</span>
+        <span class="team-name-display">Domicile</span>
 
-    return (
-        <div className="standard-container">
-            <div className="team home">
-                <h2 className="team-name">{Home.TeamName || "N/A"}</h2>
-                <p className="team-score">{Home.Points || 0}</p>
-                <div className="team-timeouts">
-                    {Array.from({ length: Home.Timeout?.Count || 0 }).map((_, index) => (
-                        <span key={index} className="timeout-circle"></span>
-                    ))}
-                </div>
-                <p className="team-penalty-timer">{Home.Exclusion?.Timer || "N/A"}</p>
-            </div>
-
-            <div className="center-section">
-                <p className="period-set">{periodOrSet}</p>
-                <p className="timer">{Timer.Value || "00:00"}</p>
-                <div className="possession-service">
-                    {Home.Possession && <span className="possession-arrow home"></span>}
-                    {Guest.Possession && <span className="possession-arrow guest"></span>}
-                </div>
-            </div>
-
-            <div className="team guest">
-                <h2 className="team-name">{Guest.TeamName || "N/A"}</h2>
-                <p className="team-score">{Guest.Points || 0}</p>
-                <div className="team-timeouts">
-                    {Array.from({ length: Guest.Timeout?.Count || 0 }).map((_, index) => (
-                        <span key={index} className="timeout-circle"></span>
-                    ))}
-                </div>
-                <p className="team-penalty-timer">{Guest.Exclusion?.Timer || "N/A"}</p>
-            </div>
+        <div className="timeout-left">
+          <div className="circleIcon"></div>
+          <div className="circleIcon"></div>
+          <div className="circleIcon"></div>
         </div>
-    );
+        <div class="timer-timeout">00:00</div>
+      </div>
+
+      <div class="middle-section">
+        <div class="period">
+          <div className="arrow-icon-left"></div>
+
+          <span class="period-number">1</span>
+          <div className="arrow-icon-right"></div>
+        </div>
+        <div class="timer">00:00</div>
+        <img
+          className="logo"
+          src="/_Stramatel_Logo_FR_2.png"
+          alt="logo"
+        />
+      </div>
+
+      <div class="team-display guest">
+        <span class="team-score-display">999</span>
+        <span class="team-name-display">Invité</span>
+
+        <div className="timeout-right">
+          <div className="circleIcon"></div>
+          <div className="circleIcon"></div>
+          <div className="circleIcon"></div>
+        </div>
+        <div class="timer-timeout">00:00</div>
+      </div>
+    </div>
+  );
 };
 
 export default StandardDisplay;
