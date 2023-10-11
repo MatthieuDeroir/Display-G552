@@ -17,6 +17,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
         // Update local gameState with incomingGameState if not null
         if (incomingGameState) {
             setGameState(incomingGameState);
+            console.log('incomingGameState', incomingGameState)
         }
     }, [incomingGameState]);
   const periodOrSet = gameState?.Period || gameState?.Set || "";
@@ -33,6 +34,18 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const TimeoutsTimer = gameState?.Home?.Timeout?.Time || savedGameState?.Home?.Timeout?.Time || "";
     const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
     const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Time || savedGameState?.Guest?.Timeout?.Time || "";
+
+    useEffect(() => {
+        console.log('possessionHome', possessionHome)
+        console.log('possessionGuest', possessionGuest)
+        console.log('homeTeamFouls', homeTeamFouls)
+        console.log('guestTeamFouls', guestTeamFouls)
+        console.log('homeTeamTimeouts', homeTeamTimeouts)
+        console.log('guestTeamTimeouts', guestTeamTimeouts)
+        console.log('TimeoutsTimer', TimeoutsTimer)
+
+
+    }, [possessionHome, possessionGuest, homeTeamFouls, guestTeamFouls, homeTeamTimeouts, guestTeamTimeouts, TimeoutsTimer])
 
 
 
