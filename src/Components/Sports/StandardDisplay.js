@@ -96,7 +96,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
           <div className="timeout-right timeout-display">
               {
                   [...Array(3)].map((_, i) => {
-                      return i < guestTeamTimeouts
+                      return guestTeamTimeouts < i
                           ? <div className="circleIcon filled" key={i}></div>
                           : <div className="circleIcon empty" key={i}></div>;
                   })
