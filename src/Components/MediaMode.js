@@ -31,10 +31,9 @@ const MediaMode = ({mediaState}) => {
     const mediaPath = currentMedia.path || ''; // Default to empty string if path is not provided
 
     return (
-        <div className="container" style={{overflow:"hidden", maxWidth: "inherit"}}>
+        <>
             {isVideo ? (
                 <video
-                    style={{maxWidth: "100%"}}
                     src={mediaPath}
                     autoPlay
                     preload={"auto"}
@@ -46,7 +45,7 @@ const MediaMode = ({mediaState}) => {
                     <img src={mediaPath} alt="Media content"/>
                 </>
             )}
-        </div>
+        </>
     );
 };
 

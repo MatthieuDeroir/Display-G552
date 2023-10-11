@@ -26,15 +26,6 @@
 /*    object-fit: fill;*/
 /*}*/
 
-.html {
-    overflow: hidden;
-}
-
-.body {
-    overflow: hidden;
-}
-
-
 /* TableTennis.css */
 .table-tennis-container {
     font-family: 'DigitalFont', sans-serif; /* Make sure you link to a digital font */
