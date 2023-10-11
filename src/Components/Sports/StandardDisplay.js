@@ -66,8 +66,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
                   })
               }
           </div>
-          {TimeoutsTimer === "00:00" ? <div className="time-timeout">{homeTeamFouls}</div> : <div class="timer-timeout">{TimeoutsTimer}</div>}
-        <div class="timer-timeout">{TimeoutsTimer}</div>
+          {TimeoutsTimer === "00:0" ? <div className="time-timeout">{homeTeamFouls}</div> : <div class="timer-timeout">{TimeoutsTimer}</div>}
       </div>
 
       <div class="middle-section">
@@ -98,12 +97,14 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
           <div className="timeout-right timeout-display">
               {
                   [...Array(3)].map((_, i) => {
-                      return guestTeamTimeouts < i
+                      return i < guestTeamTimeouts
                           ? <div className="circleIcon filled" key={i}></div>
                           : <div className="circleIcon empty" key={i}></div>;
                   })
               }
           </div>
+          {TimeoutsTimer === "00:0" ? <div className="time-timeout">{homeTeamFouls}</div> : null}
+
 
       </div>
     </div>
