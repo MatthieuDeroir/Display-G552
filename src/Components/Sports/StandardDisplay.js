@@ -21,7 +21,8 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     }, [incomingGameState]);
   const periodOrSet = gameState?.Period || gameState?.Set || "";
     const timer = gameState?.Timer?.Value || savedGameState?.Timer?.Value || "";
-    const possession = gameState?.Possession || savedGameState?.Possession || "";
+    const possessionHome = gameState?.Home.Possession || savedGameState?.Home.Possession || "";
+    const possessionGuest = gameState?.Guest.Possession || savedGameState?.Guest.Possession || "";
     const homeTeamName = gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "";
     const guestTeamName = gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "";
     const homeTeamScore = gameState?.Home?.Points.toString() || savedGameState?.Home?.Points.toString() || 0;
@@ -48,14 +49,14 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
 
       <div class="middle-section">
         <div class="period">
-          {possession === "Home" ? (
+          { possessionHome ? (
             <div className="possession-icon-left"></div>
           ) : null}
           {/*<div className="arrow-icon-left"></div>*/}
 
           <span class="period-number">1</span>
 
-          {possession === "Guest" ? (
+          {possessionGuest ? (
             <div className="possession-icon-right"></div>
           ) : null}
           {/*<div className="arrow-icon-right"></div>*/}
