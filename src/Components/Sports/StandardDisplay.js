@@ -24,28 +24,16 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const possessionHome = gameState?.Home.Possession || savedGameState?.Home.Possession || "";
     const possessionGuest = gameState?.Guest.Possession || savedGameState?.Guest.Possession || "";
     const homeTeamName = gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "";
+    const homeTeamFouls = gameState?.Home?.Fouls.RS || savedGameState?.Home?.Fouls.RS || "";
     const guestTeamName = gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "";
+    const guestTeamFouls = gameState?.Guest?.Fouls.RS || savedGameState?.Guest?.Fouls.RS || "";
     const homeTeamScore = gameState?.Home?.Points?.toString() || savedGameState?.Home?.Points?.toString() || 0;
     const guestTeamScore = gameState?.Guest?.Points?.toString() || savedGameState?.Guest?.Points?.toString() || 0;
     const homeTeamTimeouts = gameState?.Home?.Timeout?.Counts || savedGameState?.Home?.Timeout?.Counts || "";
-    const homeTeamTimeoutsTimer = gameState?.Home?.Timeout?.Time || savedGameState?.Home?.Timeout?.Time || "";
+    const TimeoutsTimer = gameState?.Home?.Timeout?.Time || savedGameState?.Home?.Timeout?.Time || "";
     const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
-    const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Time || savedGameState?.Guest?.Timeout?.Time || "";
+    // const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Time || savedGameState?.Guest?.Timeout?.Time || "";
 
-    useEffect(() => {
-        console.log(periodOrSet)
-        console.log(timer)
-        console.log(possessionHome)
-        console.log(possessionGuest)
-        console.log(homeTeamName)
-        console.log(guestTeamName)
-        console.log(homeTeamScore)
-        console.log(guestTeamScore)
-        console.log(homeTeamTimeouts)
-        console.log(homeTeamTimeoutsTimer)
-        console.log(guestTeamTimeouts)
-        console.log(guestTeamTimeoutsTimer)
-    }, [periodOrSet, timer, possessionHome, possessionGuest, homeTeamName, guestTeamName, homeTeamScore, guestTeamScore, homeTeamTimeouts, homeTeamTimeoutsTimer, guestTeamTimeouts, guestTeamTimeoutsTimer])
 
 
 
@@ -64,7 +52,8 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
                   })
               }
           </div>
-        <div class="timer-timeout">{homeTeamTimeoutsTimer}</div>
+          {TimeoutsTimer === "00:00" ? <div className="time-timeout">{homeTeamFouls}</div> : <div class="timer-timeout">{TimeoutsTimer}</div>}
+        <div class="timer-timeout">{TimeoutsTimer}</div>
       </div>
 
       <div class="middle-section">
@@ -153,7 +142,8 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
                 })
                   }
                 </div>
-                <div class="timer-timeout">{guestTeamTimeoutsTimer}</div>
+                {TimeoutsTimer === "00:00" ? <div className="time-timeout">{homeTeamFouls}</div> : null}
+
             </div>
         </div>
     );
