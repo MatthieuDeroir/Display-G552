@@ -45,7 +45,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
             console.log('TimeoutsTimer', TimeoutsTimer)
 
 
-        }, [possessionHome, possessionGuest, homeTeamFouls, guestTeamFouls, homeTeamTimeouts, guestTeamTimeouts, TimeoutsTimer])
+        })
 
 
     }, 1000)
