@@ -34,8 +34,10 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
     const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Time || savedGameState?.Guest?.Timeout?.Time || "";
 
-    setInterval(() => {
-        useEffect(() => {
+
+
+    useEffect(() => {
+        setInterval(() => {
             console.log('possessionHome', possessionHome)
             console.log('possessionGuest', possessionGuest)
             console.log('homeTeamFouls', homeTeamFouls)
@@ -43,11 +45,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
             console.log('homeTeamTimeouts', homeTeamTimeouts)
             console.log('guestTeamTimeouts', guestTeamTimeouts)
             console.log('TimeoutsTimer', TimeoutsTimer)
-
-
         })
-
-
     }, 1000)
 
 
