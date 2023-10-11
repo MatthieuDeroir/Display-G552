@@ -15,11 +15,11 @@ const MediaMode = ({mediaState, mediaMode}) => {
         const currentMedia = mediaState[currentMediaIndex];
         const duration = (currentMedia && typeof currentMedia.duration === 'number') ? currentMedia.duration * 1000 : 5000; // Default to 5 seconds if not provided
 
-        const timer = setInterval(() => {
+        const timer = setTimeout(() => {
             setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length);
         }, duration);
 
-        return () => clearInterval(timer);
+        return () => clearTimeout(timer);
     }, [currentMediaIndex, mediaState]);
 
     if (!Array.isArray(mediaState) || mediaState.length === 0 || !mediaState[currentMediaIndex]) {
@@ -27,7 +27,7 @@ const MediaMode = ({mediaState, mediaMode}) => {
     }
 
     const currentMedia = mediaState[currentMediaIndex];
-    const isVideo = currentMedia.type === "video";
+    const isVideo = currentMedia.type === "video" || currentMedia.type === "video/mp4"
     const mediaPath = currentMedia.path || ''; // Default to empty string if path is not provided
 
     return (
