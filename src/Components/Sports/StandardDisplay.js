@@ -82,18 +82,20 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
            : <div className="arrow-icon-right hidden"></div>
           }
         </div>
-          <img
-              className="logo-fiba"
-              style={{visibility: "hidden"}}
-              src="images/fiba.png"
-              alt="logo"
-          />
-          <div className="timer">{timer}</div>
-          <img
-              className="logo-fiba"
-              src="images/fiba.png"
-              alt="logo"
-          />
+          <div className="time-logo">
+              <img
+                  className="logo-fiba"
+                  style={{visibility: "hidden"}}
+                  src="images/fiba_e&v_full_colour_port_Approved Equipment_vecto.jpg"
+                  alt="logo"
+              />
+              <div className="timer">{timer}</div>
+              <img
+                  className="logo-fiba"
+                  src="images/fiba_e&v_full_colour_port_Approved Equipment_vecto.jpg"
+                  alt="logo"
+              />
+          </div>
         <img
           className="logo"
           src="images/_Stramatel_Logo_FR_2.png"

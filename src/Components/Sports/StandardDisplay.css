@@ -79,9 +79,15 @@ body {
   margin-top: 20px;
   font-size: 70px;
 }
+
 .timeout-right {
   align-items: flex-end;
 }
+
+.time-logo{
+  display: flex;
+}
+
 .timeout-display {
   margin: 10px 0 10px 0;
   display: flex;
