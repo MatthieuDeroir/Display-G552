@@ -25,12 +25,12 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const possessionHome = gameState?.Home.Possession || savedGameState?.Home.Possession || "";
     const possessionGuest = gameState?.Guest.Possession || savedGameState?.Guest.Possession || "";
     const homeTeamName = gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "";
-    const homeTeamFouls = gameState?.Home?.Fouls.RS || savedGameState?.Home?.Fouls.RS || "";
+    const homeTeamFouls = gameState?.Home?.Fouls.Team || savedGameState?.Home?.Fouls.Team || "";
     const guestTeamName = gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "";
-    const guestTeamFouls = gameState?.Guest?.Fouls.RS || savedGameState?.Guest?.Fouls.RS || "";
+    const guestTeamFouls = gameState?.Guest?.Fouls.Team || savedGameState?.Guest?.Fouls.Team || "";
     const homeTeamScore = gameState?.Home?.Points?.toString() || savedGameState?.Home?.Points?.toString() || 0;
     const guestTeamScore = gameState?.Guest?.Points?.toString() || savedGameState?.Guest?.Points?.toString() || 0;
-    const homeTeamTimeouts = gameState?.Home?.Timeout?.Counts || savedGameState?.Home?.Timeout?.Counts || "";
+    const homeTeamTimeouts = gameState?.Home?.Timeout?.Count || savedGameState?.Home?.Timeout?.Count || "";
     const TimeoutsTimer = gameState?.Home?.Timeout?.Time || savedGameState?.Home?.Timeout?.Time || "";
     const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
     const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Time || savedGameState?.Guest?.Timeout?.Time || "";
