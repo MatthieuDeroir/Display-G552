@@ -31,7 +31,7 @@ const MediaMode = ({mediaState}) => {
     const mediaPath = currentMedia.path || ''; // Default to empty string if path is not provided
 
     return (
-        <div className="container">
+        <div className="container" style={{overflow:"hidden"}}>
             {isVideo ? (
                 <video
                     style={{maxWidth: "100%", maxHeight: "100%"}}
