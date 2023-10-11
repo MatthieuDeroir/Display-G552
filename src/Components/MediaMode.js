@@ -35,6 +35,7 @@ const MediaMode = ({mediaState}) => {
             {isVideo ? (
                 <video
                     src={mediaPath}
+                    style={{width: "512px", height: "256px"}}
                     autoPlay
                     preload={"auto"}
                     onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
