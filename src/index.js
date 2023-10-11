@@ -38,6 +38,9 @@ const App = () => {
                     case 2:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_MAKE_SOME_NOISE.mp4', duration: 6, type: 'video'}];
                         break;
+                    case 3:
+                        mediaArray = [{order: 1, path: 'staticMedias/English/_DEFENCE.mp4', duration: 3, type: 'video'}];
+                        break;
                     case 16:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_1_POINT.mp4', duration: 3, type: 'video'}];
                         break;
