@@ -66,7 +66,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
                   })
               }
           </div>
-          {TimeoutsTimer === "0:00" ? <div className="time-timeout">{homeTeamFouls}</div> : <div class="timer-timeout">{TimeoutsTimer}</div>}
+          {TimeoutsTimer === "0:00" ? <div className="timer-timeout">{homeTeamFouls}</div> : <div class="timer-timeout">{TimeoutsTimer}</div>}
       </div>
 
       <div class="middle-section">
@@ -103,7 +103,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
                   })
               }
           </div>
-          {TimeoutsTimer === "0:00" ? <div className="time-timeout">{homeTeamFouls}</div> : null}
+          {TimeoutsTimer === "0:00" ? <div className="timer-timeout">{guestTeamFouls}</div> : null}
 
 
       </div>
