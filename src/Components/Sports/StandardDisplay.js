@@ -37,17 +37,17 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
 
 
 
-    useEffect(() => {
-        setInterval(() => {
-            console.log('possessionHome', possessionHome)
-            console.log('possessionGuest', possessionGuest)
-            console.log('homeTeamFouls', homeTeamFouls)
-            console.log('guestTeamFouls', guestTeamFouls)
-            console.log('homeTeamTimeouts', homeTeamTimeouts)
-            console.log('guestTeamTimeouts', guestTeamTimeouts)
-            console.log('TimeoutsTimer', TimeoutsTimer)
-        })
-    }, 1000)
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         console.log('possessionHome', possessionHome)
+    //         console.log('possessionGuest', possessionGuest)
+    //         console.log('homeTeamFouls', homeTeamFouls)
+    //         console.log('guestTeamFouls', guestTeamFouls)
+    //         console.log('homeTeamTimeouts', homeTeamTimeouts)
+    //         console.log('guestTeamTimeouts', guestTeamTimeouts)
+    //         console.log('TimeoutsTimer', TimeoutsTimer)
+    //     })
+    // }, 1000)
 
 
 
@@ -109,55 +109,6 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     </div>
   );
 
-    return (
-        <div class="scoreboard">
-            <div class="team-display home">
-                <span class="team-score-display">{homeTeamScore}</span>
-                <span class="team-name-display">{homeTeamName}</span>
-
-                <div className="timeout-left">
-                  {
-                    Array.from(Array(homeTeamTimeouts), (e, i) => {
-                        return <div className="circleIcon"></div>
-                    })
-                }
-                </div>
-            </div>
-
-            <div class="middle-section">
-                <div class="period">
-                  {possession === "Home" ? <div className="possession-icon-left"></div> : null }
-                    {/*<div className="arrow-icon-left"></div>*/}
-
-                    <span class="period-number">{periodOrSet}</span>
-
-                  {possession === "Guest" ? <div className="possession-icon-right"></div> : null}
-                    {/*<div className="arrow-icon-right"></div>*/}
-                </div>
-                <div class="timer">{timer}</div>
-                <img
-                    className="logo"
-                    src="images/_Stramatel_Logo_FR_2.png"
-                    alt="logo"
-                />
-            </div>
-
-            <div class="team-display guest">
-                <span class="team-score-display">{guestTeamScore}</span>
-                <span class="team-name-display">{guestTeamName}</span>
-
-                <div className="timeout-right">
-                    {
-                  Array.from(Array(guestTeamTimeouts), (e, i) => {
-                  return <div className="circleIcon"></div>
-                })
-                  }
-                </div>
-                {TimeoutsTimer === "00:00" ? <div className="time-timeout">{homeTeamFouls}</div> : null}
-
-            </div>
-        </div>
-    );
 };
 
 export default StandardDisplay;
