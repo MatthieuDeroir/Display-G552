@@ -93,12 +93,17 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
         <span class="team-score-display">{guestTeamScore}</span>
         <span class="team-name-display team-name-right">{guestTeamName}</span>
 
-        <div className="timeout-right timeout-display">
-          {Array.from(Array(guestTeamTimeouts), (e, i) => {
-            return <div className="circleIcon"></div>;
-          })}
-        </div>
-        <div class="timer-timeout">{guestTeamTimeoutsTimer}</div>
+          <div className="timeout-right timeout-display">
+              {
+                  [...Array(3)].map((_, i) => {
+                      return i < guestTeamTimeouts
+                          ? <div className="circleIcon filled" key={i}></div>
+                          : <div className="circleIcon empty" key={i}></div>;
+                  })
+              }
+          </div>
+
+          <div class="timer-timeout">{guestTeamTimeoutsTimer}</div>
       </div>
     </div>
   );
