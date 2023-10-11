@@ -16,7 +16,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     useEffect(() => {
         // Update local gameState with incomingGameState if not null
         if (incomingGameState) {
-
+            console.log('incomingGameState', incomingGameState)
             setGameState(incomingGameState);
         }
     }, [incomingGameState]);
