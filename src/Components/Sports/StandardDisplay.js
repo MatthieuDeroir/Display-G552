@@ -32,6 +32,22 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
     const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Timer || savedGameState?.Guest?.Timeout?.Timer || "";
 
+    useEffect(() => {
+        console.log(periodOrSet)
+        console.log(timer)
+        console.log(possessionHome)
+        console.log(possessionGuest)
+        console.log(homeTeamName)
+        console.log(guestTeamName)
+        console.log(homeTeamScore)
+        console.log(guestTeamScore)
+        console.log(homeTeamTimeouts)
+        console.log(homeTeamTimeoutsTimer)
+        console.log(guestTeamTimeouts)
+        console.log(guestTeamTimeoutsTimer)
+    }, [periodOrSet, timer, possessionHome, possessionGuest, homeTeamName, guestTeamName, homeTeamScore, guestTeamScore, homeTeamTimeouts, homeTeamTimeoutsTimer, guestTeamTimeouts, guestTeamTimeoutsTimer])
+
+
 
   return (
     <div class="scoreboard">
