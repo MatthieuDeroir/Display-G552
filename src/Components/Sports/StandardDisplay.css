@@ -97,11 +97,20 @@ body {
 .circleIcon {
   border-radius: 10px;
   height: 15px;
-  background: green;
   width: 15px;
   font-size: 15px !important;
   margin: 3px;
 }
+
+.circleIcon.filled {
+  background: green;
+}
+
+.circleIcon.empty {
+  background: transparent;
+  border: 2px solid green; /* or another color if you want */
+}
+
 .timer-timeout {
   color: #e6b717;
   font-size: 40px;
