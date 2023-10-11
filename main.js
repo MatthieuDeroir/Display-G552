@@ -41,7 +41,7 @@ function handleData(data) {
         } else if (data.Mode === 16) {
             console.log("1 points")
             mainWindow.webContents.send('server-data', data);
-        } else if (data.Mode === 117) {
+        } else if (data.Mode === 17) {
             console.log("2 points")
             mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 18) {
@@ -53,7 +53,7 @@ function handleData(data) {
         } else if (data.Mode === 20) {
             console.log("Foul")
             mainWindow.webContents.send('server-data', data);
-        } else if (data.Mode === 15) {
+        } else if (data.Mode === 21) {
             console.log("Prematch")
             mainWindow.webContents.send('server-data', data);
 

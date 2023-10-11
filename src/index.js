@@ -30,7 +30,7 @@ const App = () => {
                 // if data.medias is not an array, wrap it in one
                 switch (data.Mode) {
                     case 0:
-                        mediaArray = [{order: 1, path: 'staticMedias/English/_DEFENSE.mp4', duration: 5, type: 'video'}];
+                        mediaArray = [{order: 1, path: 'staticMedias/English/_DEFENCE.mp4', duration: 5, type: 'video'}];
                         break;
                     case 1:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_DUNK.mp4', duration: 3, type: 'video'}];
@@ -38,22 +38,22 @@ const App = () => {
                     case 2:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_MAKE_SOME_NOISE.mp4', duration: 6, type: 'video'}];
                         break;
-                    case 10:
+                    case 16:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_1_POINT.mp4', duration: 3, type: 'video'}];
                         break;
-                    case 11:
+                    case 17:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_2_POINTS.mp4', duration: 3, type: 'video'}];
                         break;
-                    case 12:
+                    case 18:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_3_POINTS.mp4', duration: 4, type: 'video'}];
                         break;
-                    case 13:
+                    case 19:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_TIME_OUT.mp4', duration: 3, type: 'video'}];
                         break;
-                    case 14:
+                    case 20:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_FOUL.mp4', duration: 3, type: 'video'}];
                         break;
-                    case 15:
+                    case 21:
                         mediaArray = [{order: 1, path: 'staticMedias/English/_PREMATCH.mp4', duration: 3, type: 'video'}];
                         break;
                     default:
