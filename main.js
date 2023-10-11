@@ -67,6 +67,7 @@ function handleData(data) {
             // console.log('data.gameState.mode ===', data.Mode, ' => Media data are handled');
             // console.log(data);
             // console.log('Media data are handled');
+            console.log("USER SPECIFICS")
             mainWindow.webContents.send('server-data', data);
         }
     }
