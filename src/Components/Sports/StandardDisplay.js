@@ -55,11 +55,15 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
         <span class="team-score-display">{homeTeamScore}</span>
         <span class="team-name-display">{homeTeamName}</span>
 
-        <div className="timeout-left timeout-display">
-          {Array.from(Array(homeTeamTimeouts), (e, i) => {
-            return <div className="circleIcon"></div>;
-          })}
-        </div>
+          <div className="timeout-left timeout-display">
+              {
+                  [...Array(3)].map((_, i) => {
+                      return i < homeTeamTimeouts
+                          ? <div className="circleIcon filled" key={i}></div>
+                          : <div className="circleIcon empty" key={i}></div>;
+                  })
+              }
+          </div>
         <div class="timer-timeout">{homeTeamTimeoutsTimer}</div>
       </div>
 
@@ -70,7 +74,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
           ) : null}
           {/*<div className="arrow-icon-left"></div>*/}
 
-          <span class="period-number">1</span>
+          <span class="period-number">{periodOrSet}</span>
 
           {possessionGuest ? (
             <div className="possession-icon-right"></div>
