@@ -92,7 +92,6 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
               }
           </div>
 
-          <div class="timer-timeout">{guestTeamTimeoutsTimer}</div>
       </div>
     </div>
   );
@@ -110,7 +109,6 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
                     })
                 }
                 </div>
-                <div class="timer-timeout">{homeTeamTimeoutsTimer}</div>
             </div>
 
             <div class="middle-section">
