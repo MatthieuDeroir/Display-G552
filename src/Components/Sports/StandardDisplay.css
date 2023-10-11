@@ -115,3 +115,7 @@ body {
   color: #e6b717;
   font-size: 40px;
 }
+
+.hidden {
+  display: none;
+}
