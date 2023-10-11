@@ -74,14 +74,14 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
         <div class="period">
           { possessionHome === false ?
               <div> </div>
-           : <div className="possession-icon-left"></div>}
+           : <div className="arrow-icon-left"></div>}
           {/*<div className="arrow-icon-left"></div>*/}
 
           <span class="period-number">{periodOrSet}</span>
 
           {possessionGuest === true ?
               <div> </div>
-           : <div className="possession-icon-right"></div> }
+           : <div className="arrow-icon-right"></div> }
           {/*<div className="arrow-icon-right"></div>*/}
         </div>
         <div class="timer">{timer}</div>
