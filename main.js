@@ -38,19 +38,19 @@ function handleData(data) {
         } else if (data.Mode === 2) {
             console.log("NOISE")
             mainWindow.webContents.send('server-data', data);
-        } else if (data.Mode === 10) {
+        } else if (data.Mode === 16) {
             console.log("1 points")
             mainWindow.webContents.send('server-data', data);
-        } else if (data.Mode === 11) {
+        } else if (data.Mode === 117) {
             console.log("2 points")
             mainWindow.webContents.send('server-data', data);
-        } else if (data.Mode === 12) {
+        } else if (data.Mode === 18) {
             console.log("3 points")
             mainWindow.webContents.send('server-data', data);
-        } else if (data.Mode === 13) {
+        } else if (data.Mode === 19) {
             console.log("Timeout")
             mainWindow.webContents.send('server-data', data);
-        } else if (data.Mode === 14) {
+        } else if (data.Mode === 20) {
             console.log("Foul")
             mainWindow.webContents.send('server-data', data);
         } else if (data.Mode === 15) {
