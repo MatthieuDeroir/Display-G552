@@ -86,13 +86,13 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
               <img
                   className="logo-fiba"
                   style={{visibility: "hidden"}}
-                  src="images/fiba_e&v_full_colour_port_Approved Equipment_vecto.jpg"
+                  src="images/fiba.png"
                   alt="logo"
               />
               <div className="timer">{timer}</div>
               <img
                   className="logo-fiba"
-                  src="images/fiba_e&v_full_colour_port_Approved Equipment_vecto.jpg"
+                  src="images/fiba.png"
                   alt="logo"
               />
           </div>
