@@ -2,6 +2,7 @@ const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 const config = require('./config.js');
 const net = require('net');
+const { saveData, readData } = require('./store');
 
 const socketPath = '/tmp/_sysmes.sock';
 
@@ -155,3 +156,14 @@ app.on('activate', () => {
         createWindows();
     }
 });
+
+ipcMain.on('save-data', (event, data) => {
+    saveData(data);
+    event.reply('data-saved');
+});
+
+ipcMain.on('load-data', (event) => {
+    const data = readData();
+    event.reply('data-loaded', data);
+});
+
