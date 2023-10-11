@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './Mode.css';
 
-const MediaMode = ({mediaState}) => {
+const MediaMode = ({mediaState, mediaMode}) => {
     const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
     useEffect(() => {
@@ -33,16 +33,26 @@ const MediaMode = ({mediaState}) => {
     return (
         <>
             {isVideo ? (
-                <video
-                    src={mediaPath}
-                    autoPlay
-                    preload={"auto"}
-                    onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
-                />
+                mediaMode ?
+                    <video
+                        src={mediaPath}
+                        autoPlay
+                        preload={"auto"}
+                        onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
+                    /> :
+                    <video
+                        src={"../../Frontend/public" + mediaPath}
+                        autoPlay
+                        preload={"auto"}
+                        onEnded={() => setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length)}
+                    />
             ) : (
                 <>
-                    <img src={"../../Frontend/public" + mediaPath} alt="Media content"/>
-                    <img src={mediaPath} alt="Media content"/>
+                    {mediaMode ?
+                        <img src={"../../Frontend/public" + mediaPath} alt="Media content"/>
+                        :
+                        <img src={mediaPath} alt="Media content"/>
+                    }
                 </>
             )}
         </>

@@ -13,6 +13,7 @@ const App = () => {
     const [mode, setMode] = useState(''); // initialized to 'scoring'
     const [gameState, setGameState] = useState({});
     const [mediaState, setMediaState] = useState([]);
+    const [mediaMode, setMediaMode] = useState(false);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--maxWidth', config.display.width);
@@ -25,7 +26,7 @@ const App = () => {
                 setGameState(data || {});  // Assuming the data for scoring mode contains a 'gameState' property
             } else {
                 let mediaArray = [];
-
+                setMediaMode(false)
                 setMode('media');
                 // if data.medias is not an array, wrap it in one
                 switch (data.Mode) {
@@ -60,6 +61,7 @@ const App = () => {
                         mediaArray = [{order: 1, path: 'staticMedias/English/_PREMATCH.mp4', duration: 3, type: 'video'}];
                         break;
                     default:
+                        setMediaMode(true)
                         mediaArray = Array.isArray(data.medias) ? data.medias : [data.medias];
                         console.log(mediaArray)
 
@@ -82,7 +84,8 @@ const App = () => {
     return (
         < >
             {mode === 'scoring' && <ScoringMode gameState={gameState}/>}
-            {mode === 'media' && <MediaMode mediaState={mediaState}/>}
+
+            {mode === 'media' && <MediaMode mediaState={mediaState} mediaMode={mediaMode}/>}
             {mode === '' && <div>Waiting for data...</div>}
         </>
     );
