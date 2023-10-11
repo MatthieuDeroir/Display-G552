@@ -12,6 +12,7 @@ body {
     background-color: #000000;
     height: 256px;
     width: 512px;
+    overflow: hidden;
 }
 
 .team-display {
