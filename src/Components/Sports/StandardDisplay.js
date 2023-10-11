@@ -32,7 +32,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const guestTeamScore = gameState?.Guest?.Points?.toString() || savedGameState?.Guest?.Points?.toString() || 0;
     const homeTeamTimeouts = gameState?.Home?.Timeout?.Count || savedGameState?.Home?.Timeout?.Count || "";
     const TimeoutsTimer = gameState?.Home?.Timeout?.Time || savedGameState?.Home?.Timeout?.Time || "";
-    const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
+    const guestTeamTimeouts = gameState?.Guest?.Timeout?.Count || savedGameState?.Guest?.Timeout?.Count || "";
     const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Time || savedGameState?.Guest?.Timeout?.Time || "";
 
 
