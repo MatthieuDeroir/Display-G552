@@ -17,7 +17,6 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
         // Update local gameState with incomingGameState if not null
         if (incomingGameState) {
             setGameState(incomingGameState);
-            console.log('incomingGameState', incomingGameState)
         }
     }, [incomingGameState]);
   const periodOrSet = gameState?.Period || gameState?.Set || "";
