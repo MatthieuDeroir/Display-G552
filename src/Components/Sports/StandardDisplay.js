@@ -28,9 +28,9 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const homeTeamScore = gameState?.Home?.Points?.toString() || savedGameState?.Home?.Points?.toString() || 0;
     const guestTeamScore = gameState?.Guest?.Points?.toString() || savedGameState?.Guest?.Points?.toString() || 0;
     const homeTeamTimeouts = gameState?.Home?.Timeout?.Counts || savedGameState?.Home?.Timeout?.Counts || "";
-    const homeTeamTimeoutsTimer = gameState?.Home?.Timeout?.Timer || savedGameState?.Home?.Timeout?.Timer || "";
+    const homeTeamTimeoutsTimer = gameState?.Home?.Timeout?.Time || savedGameState?.Home?.Timeout?.Time || "";
     const guestTeamTimeouts = gameState?.Guest?.Timeout?.Counts || savedGameState?.Guest?.Timeout?.Counts || "";
-    const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Timer || savedGameState?.Guest?.Timeout?.Timer || "";
+    const guestTeamTimeoutsTimer = gameState?.Guest?.Timeout?.Time || savedGameState?.Guest?.Timeout?.Time || "";
 
     useEffect(() => {
         console.log(periodOrSet)
