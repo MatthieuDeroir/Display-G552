@@ -68,6 +68,7 @@ function handleData(data) {
             // console.log(data);
             // console.log('Media data are handled');
             console.log("USER SPECIFICS", data.Mode)
+            console.log(data)
             mainWindow.webContents.send('server-data', data);
         }
     }
