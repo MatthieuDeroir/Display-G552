@@ -34,6 +34,7 @@ const App = () => {
         let mediaArray = [];
         setMediaMode(false);
         setMode("media");
+        
         // if data.medias is not an array, wrap it in one
         switch (data.Mode) {
           case 0:
