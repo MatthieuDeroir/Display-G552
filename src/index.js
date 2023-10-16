@@ -115,10 +115,10 @@ const App = () => {
 
     return (
         < >
-            {mode === 'scoring' && <ScoringMode gameState={gameState}/>}
+            <ScoringMode gameState={gameState}/>
 
-            {mode === 'media' && <MediaMode mediaState={mediaState} mediaMode={mediaMode}/>}
-            {mode === '' && <div>Waiting for data...</div>}
+      {/*       {mode === 'media' && <MediaMode mediaState={mediaState} mediaMode={mediaMode}/>} */}
+            {/* {mode === '' && <div>Waiting for data...</div>} */}
         </>
     );
 };
