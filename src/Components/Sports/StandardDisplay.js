@@ -29,11 +29,11 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
 
       // Pour l'équipe invitée
       if (homeTeamName.length > 8) {
-        setFontSize(35);
+        setGuestFontSize(35);
       } else if (homeTeamName.length > 6) {
-        setFontSize(40);
+        setGuestFontSize(40);
       } else {
-        setFontSize(45);
+        setGuestFontSize(45);
       }
     };
 
@@ -123,7 +123,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "HOME";
 
   const guestTeamName =
-    gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "GUEST";
+    gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "WWWWWWWW";
   const homeTeamScore = formatScore(
     gameState?.Home?.Points || savedGameState?.Home?.Points || "0"
   );
