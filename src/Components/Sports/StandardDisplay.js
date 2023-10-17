@@ -25,7 +25,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     gameState?.Timer?.Value || savedGameState?.Timer?.Value || "01:00";
 
   const homeTeamName =
-    gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "Home";
+    gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "WWWWWWWW";
   const guestTeamName =
     gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "Guest";
   const homeTeamScore =

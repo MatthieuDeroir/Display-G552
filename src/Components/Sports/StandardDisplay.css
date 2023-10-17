@@ -55,7 +55,7 @@ body {
 
 .team-name-display {
   font-family: "D-DIN-Bold", sans-serif;
-  margin-top:10px ;
+  margin-top:15px ;
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -74,7 +74,7 @@ body {
   color: #ff0000;
   font-size: 100px;
   height: 75px;
-  margin-top: -10px;
+  margin-top: -15px;
   text-align: center;
 }
 
@@ -94,6 +94,7 @@ body {
 }
 
 .logo {
+  margin-top: 10px;
   width: 180px;
 }
 
@@ -112,7 +113,7 @@ body {
 
 .time-logo {
   display: flex;
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .timeout-display {
@@ -120,8 +121,8 @@ body {
   flex-direction: column;
   width: 80px;
   align-items: center;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .circleIcon {
