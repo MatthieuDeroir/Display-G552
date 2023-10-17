@@ -12,6 +12,8 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   useEffect(() => {
     // Store gameState in localStorage whenever it changes
     localStorage.setItem("gameState", JSON.stringify(gameState));
+    console.log(gameState)
+
   }, [gameState]);
 
   useEffect(() => {
@@ -20,7 +22,6 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
       setGameState(incomingGameState);
     }
 
-    console.log(gameState)
   }, [incomingGameState]);
 
   const cleanTeamName = (name) => {
@@ -49,7 +50,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     "3";
 
 
-    const possessionHome =
+  const possessionHome =
     gameState?.Home.Possession || savedGameState?.Home.Possession || false;
   const possessionGuest =
     gameState?.Guest.Possession || savedGameState?.Guest.Possession || true;
