@@ -114,10 +114,10 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const timer = gameState?.Timer?.Value || savedGameState?.Timer?.Value || "00:00"
     const formattedTimer = formatTimer(timer);
     const homeTeamName =
-        cleanTeamName(gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "HOMEHOME");
+        gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "MATTHOME";
 
     const guestTeamName =
-        gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "HOME";
+        gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "GUILLEST";
     const homeTeamScore = formatScore(
         gameState?.Home?.Points || savedGameState?.Home?.Points || "0"
     );
