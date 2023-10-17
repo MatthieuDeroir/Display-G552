@@ -61,7 +61,7 @@ const App = () => {
             mediaArray = [
               {
                 order: 1,
-                path: "staticMedias/English/_MAKE_SOME_NOISE.mp4",
+                path: "staticMedias/English/_NOISE.mp4",
                 duration: 6,
                 type: "video",
               },
