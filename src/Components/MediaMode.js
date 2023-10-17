@@ -10,6 +10,9 @@ const MediaMode = ({mediaState, mediaMode}) => {
             return;
         }
 
+        // Sort media by order
+        mediaState.sort((a, b) => a.order - b.order);
+
         console.log("MediaMode mediaState", mediaState);
 
         const currentMedia = mediaState[currentMediaIndex];
