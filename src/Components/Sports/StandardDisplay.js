@@ -131,13 +131,13 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     gameState?.Guest?.Points || savedGameState?.Guest?.Points || "0"
   );
   const homeTeamTimeouts =
-    gameState?.Home?.Timeout?.Counts ||
-    savedGameState?.Home?.Timeout?.Counts ||
+    gameState?.Home?.Timeout?.Count ||
+    savedGameState?.Home?.Timeout?.Count ||
     "0";
 
   const guestTeamTimeouts =
-    gameState?.Guest?.Timeout?.Counts ||
-    savedGameState?.Guest?.Timeout?.Counts ||
+    gameState?.Guest?.Timeout?.Count ||
+    savedGameState?.Guest?.Timeout?.Count ||
     "0";
 
   const possessionHome =
