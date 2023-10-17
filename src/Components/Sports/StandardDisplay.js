@@ -218,18 +218,8 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
             src="images/fiba.png"
             alt="logo"
           /> */}
-                    <
-                    <
-                    <
-                    <
-                    <
-                    << HEAD
                     <div className="timer">{formattedTimer}</div>
-                        {/*    <img className="logo-fiba" src="images/fiba.png" alt="logo" /> */}
-                        =======
-                    <div className="timer">{timer}</div>
-                        {/*    <img className="logo-fiba" src="images/fiba.png" alt="logo" /> */}
-                        >>>>>>> 95ff98bcba5b204cef244f317f6b00746a7cbed3
+                    {/*    <img className="logo-fiba" src="images/fiba.png" alt="logo" /> */}
                 </div>
                 <img
                     className="logo"
