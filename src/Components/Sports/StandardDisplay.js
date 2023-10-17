@@ -46,10 +46,11 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     savedGameState?.Guest?.Timeout?.Counts ||
     "3";
 
-  const possessionHome =
-    gameState?.Home?.Possession || savedGameState?.Home?.Possession || true;
+
+    const possessionHome =
+    gameState?.Home.Possession || savedGameState?.Home.Possession || false;
   const possessionGuest =
-    gameState?.Guest?.Possession || savedGameState?.Guest?.Possession || true;
+    gameState?.Guest.Possession || savedGameState?.Guest.Possession || true;
 
   const homeTeamFouls =
     gameState?.Home?.Fouls.Team.toString() ||
