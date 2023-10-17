@@ -71,7 +71,7 @@ const App = () => {
             mediaArray = [
               {
                 order: 1,
-                path: "staticMedias/English/_1_POINT.mp4",
+                path: "staticMedias/English/_1_POINTS.mp4",
                 duration: 3,
                 type: "video",
               },
@@ -150,13 +150,12 @@ const App = () => {
 
   return (
     <>
-    {/*   {mode === "scoring" && <ScoringMode gameState={gameState} />}
+      {mode === "scoring" && <ScoringMode gameState={gameState} />}
 
       {mode === "media" && (
         <MediaMode mediaState={mediaState} mediaMode={mediaMode} />
       )}
-      {mode === "" && <div>Waiting for data...</div>} */}
-      <ScoringMode gameState={gameState} />
+      {mode === "" && <div>Waiting for data...</div>} }
     </>
   );
 };
