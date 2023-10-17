@@ -25,9 +25,21 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     // Supprimez tous les "✝" de la chaîne
     return name.replace(/✝/g, '');
   };
+
+  const formatTimer = (timerString) => {
+    return timerString.split('').map((char, index) => {
+      // Utiliser une classe différente si l'index est 2 (troisième caractère).
+      const className = index === 2 ? "character-different" : "character";
+  
+      return <span key={index} className={className}>{char}</span>;
+    });
+  };
+  
+
   const periodOrSet = gameState?.Period || gameState?.Set || "1";
-  const timer =
-    gameState?.Timer?.Value || savedGameState?.Timer?.Value || "01:00";
+  const timer = formatTimer(
+    gameState?.Timer?.Value || savedGameState?.Timer?.Value || "00:00"
+  );
     const homeTeamName =
     cleanTeamName(gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "Home");
   const guestTeamName =
@@ -46,11 +58,10 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     savedGameState?.Guest?.Timeout?.Counts ||
     "3";
 
-
-    const possessionHome =
-    gameState?.Home.Possession || savedGameState?.Home.Possession || false;
+  const possessionHome =
+    gameState?.Home?.Possession || savedGameState?.Home?.Possession || false;
   const possessionGuest =
-    gameState?.Guest.Possession || savedGameState?.Guest.Possession || true;
+    gameState?.Guest?.Possession || savedGameState?.Guest?.Possession || true;
 
   const homeTeamFouls =
     gameState?.Home?.Fouls.Team.toString() ||
