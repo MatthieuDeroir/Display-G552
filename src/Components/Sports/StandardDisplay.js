@@ -27,11 +27,11 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   const homeTeamName =
     gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "Home";
   const guestTeamName =
-    gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "1";
+    gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "Guest";
   const homeTeamScore =
-    gameState?.Home?.Points || savedGameState?.Home?.Points || "999";
+    gameState?.Home?.Points || savedGameState?.Home?.Points || "0";
   const guestTeamScore =
-    gameState?.Guest?.Points || savedGameState?.Guest?.Points || "999";
+    gameState?.Guest?.Points || savedGameState?.Guest?.Points || "0";
   const homeTeamTimeouts =
     gameState?.Home?.Timeout?.Counts ||
     savedGameState?.Home?.Timeout?.Counts ||
