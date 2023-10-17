@@ -46,9 +46,8 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   
 
   const periodOrSet = gameState?.Period || gameState?.Set || "1";
-  const timer = formatTimer(
-    gameState?.Timer?.Value || savedGameState?.Timer?.Value || "00:00"
-  );
+  const timer = gameState?.Timer?.Value || savedGameState?.Timer?.Value || "00:00"
+  const formattedTimer = formatTimer(timer);
     const homeTeamName =
     cleanTeamName(gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "HOMEHOME");
   const guestTeamName =
@@ -134,7 +133,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
             src="images/fiba.png"
             alt="logo"
           /> */}
-          <div className="timer">{timer}</div>
+          <div className="timer">{formattedTimer}</div>
        {/*    <img className="logo-fiba" src="images/fiba.png" alt="logo" /> */}
         </div>
         <img
