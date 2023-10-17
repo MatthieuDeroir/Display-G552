@@ -88,8 +88,8 @@ function createWindows() {
             contextIsolation: false
         }
     });
-
-    // mainWindow.webContents.openDevTools();
+//TODO:TRUC DEV
+    mainWindow.webContents.openDevTools();
     mainWindow.loadFile('dist/index.html');
     mainWindow.setMenu(null);
     mainWindow.setAlwaysOnTop(true, 'screen-saver');

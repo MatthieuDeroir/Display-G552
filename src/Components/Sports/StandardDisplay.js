@@ -103,14 +103,14 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
           )}
         </div>
         <div className="time-logo">
-          <img
+        {/*   <img
             className="logo-fiba"
             style={{ visibility: "hidden" }}
             src="images/fiba.png"
             alt="logo"
-          />
+          /> */}
           <div className="timer">{timer}</div>
-          <img className="logo-fiba" src="images/fiba.png" alt="logo" />
+       {/*    <img className="logo-fiba" src="images/fiba.png" alt="logo" /> */}
         </div>
         <img
           className="logo"
@@ -120,7 +120,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
       </div>
 
       <div class="team-display guest">
-        <span class="team-score-display">{guestTeamScore}</span>
+        <span class="team-score-display team-name-right">{guestTeamScore}</span>
         <span class="team-name-display team-name-right">{guestTeamName}</span>
 
         <div className="timeout-display">
