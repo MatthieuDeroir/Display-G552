@@ -12,14 +12,13 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   useEffect(() => {
     // Store gameState in localStorage whenever it changes
     localStorage.setItem("gameState", JSON.stringify(gameState));
-    console.log(gameState)
+
 
   }, [gameState]);
 
   useEffect(() => {
     // Update local gameState with incomingGameState if not null
     if (incomingGameState) {
-      console.log("incomingGameState", incomingGameState);
       setGameState(incomingGameState);
     }
   }, [incomingGameState]);
