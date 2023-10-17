@@ -12,7 +12,6 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   useEffect(() => {
     // Store gameState in localStorage whenever it changes
     localStorage.setItem("gameState", JSON.stringify(gameState));
-    console.log(gameState)
 
   }, [gameState]);
 
@@ -51,9 +50,9 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
 
 
   const possessionHome =
-    gameState?.Home.Possession || savedGameState?.Home.Possession || false;
+    gameState?.Home?.Possession || savedGameState?.Home?.Possession || false;
   const possessionGuest =
-    gameState?.Guest.Possession || savedGameState?.Guest.Possession || true;
+    gameState?.Guest?.Possession || savedGameState?.Guest?.Possession || false;
 
   const homeTeamFouls =
     gameState?.Home?.Fouls.Team.toString() ||
@@ -96,7 +95,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
 
       <div class="middle-section">
         <div class="period">
-          {possessionHome ? (
+          {possessionHome === true ? (
             <div className="arrow-icon-left"></div>
           ) : (
             <div className="arrow-icon-left hidden"></div>
