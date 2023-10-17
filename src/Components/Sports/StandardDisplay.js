@@ -19,6 +19,8 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     if (incomingGameState) {
       setGameState(incomingGameState);
     }
+
+    console.log(gameState)
   }, [incomingGameState]);
 
   const cleanTeamName = (name) => {
