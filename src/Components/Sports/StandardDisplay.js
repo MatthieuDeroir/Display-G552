@@ -93,6 +93,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     function formatTimer (timerString){
         // Récupère les 5 premiers caractères ou moins si la chaîne est plus courte.
         console.log(timerString)
+        timerString = timerString.toString()
         const characters = timerString.slice(0, 5).split("");
 
         // Vérifie s'il y a moins de 5 caractères et, le cas échéant, ajoute des espaces vides jusqu'à ce qu'il y en ait 5.
