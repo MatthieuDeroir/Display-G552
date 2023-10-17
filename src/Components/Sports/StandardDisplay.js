@@ -20,14 +20,18 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
       setGameState(incomingGameState);
     }
   }, [incomingGameState]);
+
+  const cleanTeamName = (name) => {
+    // Supprimez tous les "✝" de la chaîne
+    return name.replace(/✝/g, '');
+  };
   const periodOrSet = gameState?.Period || gameState?.Set || "1";
   const timer =
     gameState?.Timer?.Value || savedGameState?.Timer?.Value || "01:00";
-
-  const homeTeamName =
-    gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "Home";
+    const homeTeamName =
+    cleanTeamName(gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "Home");
   const guestTeamName =
-    gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "Guest";
+    cleanTeamName(gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "Guest");
   const homeTeamScore =
     gameState?.Home?.Points || savedGameState?.Home?.Points || "0";
   const guestTeamScore =
