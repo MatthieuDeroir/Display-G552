@@ -90,7 +90,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
         });
     };
 
-    const formatTimer = (timerString) => {
+    function formatTimer (timerString){
         // Récupère les 5 premiers caractères ou moins si la chaîne est plus courte.
         const characters = timerString.slice(0, 5).split("");
 
