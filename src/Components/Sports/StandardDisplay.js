@@ -64,6 +64,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
         if (!timerString) {
             return 0; // Return an empty array or handle this case as you see fit.
         }
+        timerString = timerString.toString()
         return timerString.split("").map((char, index) => (
             <span key={index} className="character">
         {char}
