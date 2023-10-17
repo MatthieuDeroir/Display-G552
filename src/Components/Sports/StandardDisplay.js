@@ -12,11 +12,13 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   useEffect(() => {
     // Store gameState in localStorage whenever it changes
     localStorage.setItem("gameState", JSON.stringify(gameState));
+   
   }, [gameState]);
 
   useEffect(() => {
     // Update local gameState with incomingGameState if not null
     if (incomingGameState) {
+      console.log("incomingGameState", incomingGameState);
       setGameState(incomingGameState);
     }
   }, [incomingGameState]);
@@ -27,10 +29,17 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   };
 
   const formatTimer = (timerString) => {
-    return timerString.split('').map((char, index) => {
-      // Utiliser une classe différente si l'index est 2 (troisième caractère).
-      const className = index === 2 ? "character-different" : "character";
+    // Récupère les 5 premiers caractères ou moins si la chaîne est plus courte.
+    const characters = timerString.slice(0, 5).split('');
   
+    // Vérifie s'il y a moins de 5 caractères et, le cas échéant, ajoute des espaces vides jusqu'à ce qu'il y en ait 5.
+    while (characters.length < 5) {
+      characters.push(' '); // ajoute un espace vide à la liste, qui sera rendu comme un span vide.
+    }
+  
+    // Map sur les caractères et renvoie les spans, avec une classe différente pour l'index 2.
+    return characters.map((char, index) => {
+      const className = index === 2 ? "character-different" : "character";
       return <span key={index} className={className}>{char}</span>;
     });
   };
@@ -41,9 +50,9 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     gameState?.Timer?.Value || savedGameState?.Timer?.Value || "00:00"
   );
     const homeTeamName =
-    cleanTeamName(gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "Home");
+    cleanTeamName(gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "HOMEHOME");
   const guestTeamName =
-    cleanTeamName(gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "Guest");
+    cleanTeamName(gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "GUEST");
   const homeTeamScore =
     gameState?.Home?.Points || savedGameState?.Home?.Points || "0";
   const guestTeamScore =
@@ -59,7 +68,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     "3";
 
   const possessionHome =
-    gameState?.Home?.Possession || savedGameState?.Home?.Possession || false;
+    gameState?.Home?.Possession || savedGameState?.Home?.Possession || true;
   const possessionGuest =
     gameState?.Guest?.Possession || savedGameState?.Guest?.Possession || true;
 
