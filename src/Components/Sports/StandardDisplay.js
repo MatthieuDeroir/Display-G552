@@ -8,7 +8,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   const [gameState, setGameState] = useState(
     incomingGameState || savedGameState || {}
   );
-  const [fontSize, setFontSize] = useState(45); // taille de police initiale en pixels
+  const [homeFontSize, setHomeFontSize] = useState(45); // taille de police initiale en pixels
   const teamNameRef = useRef(null); // référence pour accéder à l'élément du DOM
 
   const [guestFontSize, setGuestFontSize] = useState(45); // taille de police initiale en pixels pour l'équipe invitée
@@ -19,16 +19,16 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     const adjustFontSize = () => {
       // Pour l'équipe à domicile
 
-      if (guestTeamName.length > 8) {
-        setFontSize(35);
+      if (homeTeamName.length > 8) {
+        setHomeFontSize(35);
       } else if (guestTeamName.length > 6) {
-        setFontSize(40);
+        setHomeFontSize(40);
       } else {
-        setFontSize(45);
+        setHomeFontSize(45);
       }
 
       // Pour l'équipe invitée
-      if (homeTeamName.length > 8) {
+      if (guestTeamName.length > 8) {
         setGuestFontSize(35);
       } else if (homeTeamName.length > 6) {
         setGuestFontSize(40);
