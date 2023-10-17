@@ -89,7 +89,7 @@ function createWindows() {
         }
     });
 //TODO:TRUC DEV
-    mainWindow.webContents.openDevTools();
+//     mainWindow.webContents.openDevTools();
     mainWindow.loadFile('dist/index.html');
     mainWindow.setMenu(null);
     mainWindow.setAlwaysOnTop(true, 'screen-saver');
