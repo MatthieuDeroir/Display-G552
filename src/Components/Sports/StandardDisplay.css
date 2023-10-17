@@ -130,12 +130,16 @@ body {
   width: 180px;
 }
 .characterTimeoutsTimerDifferent{
+  font-family: "D-DIN-Bold", sans-serif;
+  color: #f9e930;
   display: inline-block;
   width: 25px;
   text-align: center
 }
 
 .characterTimeoutsTimer{
+  font-family: "D-DIN-Bold", sans-serif;
+  color: #f9e930;
   display: inline-block;
   width: 15px;
   text-align: center

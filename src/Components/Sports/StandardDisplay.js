@@ -14,32 +14,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   const [guestFontSize, setGuestFontSize] = useState(45); // taille de police initiale en pixels pour l'équipe invitée
   const guestTeamNameRef = useRef(null); // référence pour accéder à l'élément du DOM pour l'équipe invitée
 
-  useEffect(() => {
-    console.log("useEffect", teamNameRef);
-    // Cette fonction vérifie la largeur du texte et ajuste la taille de la police si nécessaire
-    const adjustFontSize = () => {
-      if (teamNameRef.current) {
-        const width = teamNameRef.current.scrollWidth;
-        console.log("width", width);
-        if (width > 250) {
-          console.log("width > 250");
-          setFontSize(30);
-        } else if (width > 200) {
-          console.log("width > 200");
-          setFontSize(35);
-        } else {
-          console.log("Normal");
-          setFontSize(45);
-        }
-      }
-    };
-
-    // Appeler la fonction lorsque le composant est monté
-    adjustFontSize();
-
-    // Si vous vous attendez à ce que la largeur change, vous pouvez ajouter des écouteurs d'événements ou utiliser un MutationObserver ici
-  }, [incomingGameState]);
-
+  
   useEffect(() => {
     // Cette fonction vérifie la largeur du texte et ajuste la taille de la police si nécessaire
     const adjustFontSize = () => {
@@ -209,7 +184,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
           })}
         </div>
 
-        {TimeoutsTimerString === "0:00" ? (
+        {false ? (
           <div className="timeout team-fouls-left">
             <span className="timeout-texte">{homeTeamFouls}</span>
           </div>
