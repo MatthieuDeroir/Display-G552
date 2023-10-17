@@ -60,6 +60,10 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     }, [incomingGameState]);
 
     const formatScore = (timerString) => {
+        console.log(timerString)
+        if (!timerString) {
+            return []; // Return an empty array or handle this case as you see fit.
+        }
         return timerString.split("").map((char, index) => (
             <span key={index} className="character">
         {char}
@@ -93,6 +97,9 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     function formatTimer (timerString){
         // Récupère les 5 premiers caractères ou moins si la chaîne est plus courte.
         console.log(timerString)
+        if (!timerString) {
+            return []; // Return an empty array or handle this case as you see fit.
+        }
         timerString = timerString.toString()
         const characters = timerString.slice(0, 5).split("");
 
