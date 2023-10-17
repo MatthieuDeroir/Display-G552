@@ -21,7 +21,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
 
       if (homeTeamName.length > 8) {
         setHomeFontSize(35);
-      } else if (guestTeamName.length > 6) {
+      } else if (homeTeamName.length > 6) {
         setHomeFontSize(40);
       } else {
         setHomeFontSize(45);
@@ -30,7 +30,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
       // Pour l'équipe invitée
       if (guestTeamName.length > 8) {
         setGuestFontSize(35);
-      } else if (homeTeamName.length > 6) {
+      } else if (guestTeamName.length > 6) {
         setGuestFontSize(40);
       } else {
         setGuestFontSize(45);
