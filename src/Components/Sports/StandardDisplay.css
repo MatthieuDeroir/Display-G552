@@ -48,9 +48,10 @@ body {
 }
 
 .team-name-display {
+  display: flex;
+  align-items: center;
   font-family: "D-DIN-Bold", sans-serif;
   margin-top: 15px;
-  display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #ffffff;
@@ -130,7 +131,9 @@ body {
   width: 180px;
 }
 .characterTimeoutsTimerDifferent{
-  font-family: "D-DIN-Bold", sans-serif;
+  font-family: "D-DIN-Bold"
+  
+  ;
   color: #f9e930;
   display: inline-block;
   width: 25px;
@@ -138,7 +141,7 @@ body {
 }
 
 .characterTimeoutsTimer{
-  font-family: "D-DIN-Bold", sans-serif;
+    font-family: "D-DIN-Bold", sans-serif;
   color: #f9e930;
   display: inline-block;
   width: 15px;

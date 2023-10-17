@@ -150,14 +150,15 @@ const App = () => {
 
     return (
         <>
-            {mode === "scoring" &&
+          {/*   {mode === "scoring" &&
                 <ScoringMode gameState={gameState}/>
             }
 
             {mode === "media" &&
                 <MediaMode mediaState={mediaState} mediaMode={mediaMode}/>
             }
-            {mode === "" && <div>Waiting for data...</div>}
+            {mode === "" && <div>Waiting for data...</div>} */}
+            <ScoringMode gameState={gameState}/>
         </>
     );
 };
