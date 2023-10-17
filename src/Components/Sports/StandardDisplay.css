@@ -15,7 +15,7 @@
 }
 
 body {
-
+  font-family: "D-DIN-Bold", sans-serif; 
   margin: 0px !important;
   background-color: #000000;
   height: 256px;
@@ -74,8 +74,23 @@ body {
   color: #ff0000;
   font-size: 100px;
   height: 75px;
-  margin-top: -15px;
+  margin-top: -10px;
   text-align: center;
+  text-transform: full-width;
+}
+
+.character {
+  font-family: "D-DIN-Bold", sans-serif;
+  display: inline-block; 
+  width: 50px;
+  text-align: center; 
+ 
+}
+.characterDifferen{
+  font-family: "D-DIN-Bold", sans-serif;
+  display: inline-block; 
+  width: 40px;
+  text-align: center; 
 }
 
 .middle-section {
@@ -94,7 +109,7 @@ body {
 }
 
 .logo {
-  margin-top: 5px;
+  margin-top: -15px;
   width: 180px;
 }
 
@@ -108,12 +123,14 @@ body {
 
 .timer {
   font-family: "D-DIN-Bold", sans-serif;
+  display: flex;
+  justify-content: center;
   font-size: 100px;
+  width: 250px;
 }
 
 .time-logo {
-  display: flex;
-  margin-top: 35px;
+  margin-top: 40px;
 }
 
 .timeout-display {
@@ -122,7 +139,6 @@ body {
   width: 80px;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .circleIcon {
@@ -139,7 +155,7 @@ body {
 
 .circleIcon.empty {
   background: transparent;
-  border: 2px solid #00a13b; /* or another color if you want */
+  border: 2px solid #00a13b;
 }
 
 .timeout {
