@@ -62,7 +62,7 @@ const StandardDisplay = ({gameState: incomingGameState}) => {
     const formatScore = (timerString) => {
         console.log(timerString)
         if (!timerString) {
-            return []; // Return an empty array or handle this case as you see fit.
+            return 0; // Return an empty array or handle this case as you see fit.
         }
         return timerString.split("").map((char, index) => (
             <span key={index} className="character">
