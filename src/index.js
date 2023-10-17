@@ -34,7 +34,7 @@ const App = () => {
         let mediaArray = [];
         setMediaMode(false);
         setMode("media");
-        
+
         // if data.medias is not an array, wrap it in one
         switch (data.Mode) {
           case 0:
@@ -150,13 +150,12 @@ const App = () => {
 
   return (
     <>
-     {/*  {mode === "scoring" && <ScoringMode gameState={gameState} />}
+      {mode === "scoring" && <ScoringMode gameState={gameState} />}
 
       {mode === "media" && (
         <MediaMode mediaState={mediaState} mediaMode={mediaMode} />
       )}
-      {mode === "" && <div>Waiting for data...</div>} */}
-      <ScoringMode gameState={gameState} />
+      {mode === "" && <div>Waiting for data...</div>}
     </>
   );
 };
