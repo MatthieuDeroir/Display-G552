@@ -70,7 +70,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   const possessionHome =
     gameState?.Home.Possession || savedGameState?.Home.Possession || false;
   const possessionGuest =
-    gameState?.Guest.Possession || savedGameState?.Guest.Possession || true;
+    gameState?.Guest.Possession || savedGameState?.Guest.Possession || false;
 
   const homeTeamFouls =
     gameState?.Home?.Fouls.Team.toString() ||
