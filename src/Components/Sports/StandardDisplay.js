@@ -221,12 +221,12 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
           )}
         </div>
         <div className="time-logo">
-            <img
+          {/*   <img
             className="logo-fiba"
             style={{ visibility: "hidden" }}
             src="images/fiba.png"
             alt="logo"
-          />
+          /> */}
           <div className="timer">{formattedTimer}</div>
           {/*    <img className="logo-fiba" src="images/fiba.png" alt="logo" /> */}
         </div>
