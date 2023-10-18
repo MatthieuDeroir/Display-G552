@@ -73,9 +73,9 @@ body {
 /*  direction: rtl;*/
 /*}*/
 
-/*.team-score-right {*/
-/*  direction: rtl;*/
-/*}*/
+.team-score-right {
+  direction: ltr;
+}
 
 
 
