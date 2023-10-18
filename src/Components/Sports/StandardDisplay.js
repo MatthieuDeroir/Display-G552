@@ -146,13 +146,13 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     gameState?.Guest?.Possession || savedGameState?.Guest?.Possession || false;
 
   const homeTeamFouls =
-    gameState?.Home?.Fouls.Team.toString() ||
-    savedGameState?.Home?.Fouls.Team.toString() ||
+    gameState?.Home?.Fouls?.Team?.toString() ||
+    savedGameState?.Home?.Fouls?.Team?.toString() ||
     "0";
 
   const guestTeamFouls =
-    gameState?.Guest?.Fouls.Team.toString() ||
-    savedGameState?.Guest?.Fouls.Team.toString() ||
+    gameState?.Guest?.Fouls?.Team?.toString() ||
+    savedGameState?.Guest?.Fouls?.Team?.toString() ||
     "0";
 
   const TimeoutsTimer = formatTimeoutsTimer(
