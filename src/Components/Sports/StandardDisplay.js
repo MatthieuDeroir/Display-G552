@@ -126,7 +126,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
     gameState?.Home?.TeamName || savedGameState?.Home?.TeamName || "HOME";
 
   const guestTeamName =
-    gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "WWWWWWWW";
+    gameState?.Guest?.TeamName || savedGameState?.Guest?.TeamName || "GUEST";
   const homeTeamScore = formatScore(
     gameState?.Home?.Points || savedGameState?.Home?.Points || "0"
   );
