@@ -117,16 +117,6 @@ const App = () => {
                             },
                         ];
                         break;
-                    case 21:
-                        mediaArray = [
-                            {
-                                order: 1,
-                                path: "staticMedias/English/_PREMATCH.mp4",
-                                duration: 3,
-                                type: "video",
-                            },
-                        ];
-                        break;
                     default:
                         setMediaMode(true);
                         mediaArray = Array.isArray(data.medias)
