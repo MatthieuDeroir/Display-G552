@@ -238,8 +238,8 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
       </div>
 
       <div className="team-display guest">
-        <span className="">
-          {/*{guestTeamScore}*/}
+        <span className="team-score-display team-score-right">
+          {guestTeamScore}
         </span>
         <div className="team-name-display-right">
           <span
