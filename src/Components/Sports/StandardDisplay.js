@@ -175,7 +175,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
         <span className="team-score-display">{homeTeamScore}</span>
         <div className="team-name-display-left">
           <span
-            class="team-name-display"
+            className="team-name-display"
             ref={teamNameRef}
             style={{ fontSize: `${homeFontSize}px` }}
           >
