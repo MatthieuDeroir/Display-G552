@@ -55,7 +55,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   }, [incomingGameState]);
 
   const formatScore = (timerString) => {
-    console.log('Input Score:', timerString);
+    // console.log('Input Score:', timerString);
     if (!timerString) {
       return 0;
     }
@@ -65,7 +65,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
         {char}
       </span>
     ));
-    console.log('Formatted Score:', formatted);
+    // console.log('Formatted Score:', formatted);
     return formatted;
   };
 
@@ -95,7 +95,7 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
 
   function formatTimer(timerString) {
     // Récupère les 5 premiers caractères ou moins si la chaîne est plus courte.
-    console.log(timerString);
+    // console.log(timerString);
     if (!timerString) {
       return []; // Return an empty array or handle this case as you see fit.
     }
