@@ -55,17 +55,20 @@ const StandardDisplay = ({ gameState: incomingGameState }) => {
   }, [incomingGameState]);
 
   const formatScore = (timerString) => {
-    console.log(timerString);
+    console.log('Input Score:', timerString);
     if (!timerString) {
-      return 0; // Return an empty array or handle this case as you see fit.
+      return 0;
     }
     timerString = timerString.toString();
-    return timerString.split("").map((char, index) => (
-      <span key={index} className="character">
+    const formatted = timerString.split("").map((char, index) => (
+        <span key={index} className="character">
         {char}
       </span>
     ));
+    console.log('Formatted Score:', formatted);
+    return formatted;
   };
+
 
   const formatTimeoutsTimer = (timerString) => {
     // Récupère les 5 premiers caractères ou moins si la chaîne est plus courte.
