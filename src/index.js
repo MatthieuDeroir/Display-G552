@@ -31,7 +31,7 @@ const App = () => {
             if (data.Mode === 9) {
                 setMode("scoring");
                 setGameState(data || {}); // Assuming the data for scoring mode contains a 'gameState' property
-            } else if (data.Mode === 22) {
+            } else if (data.Mode === 8) {
                 setMode("logo");
             } else if (data.Mode === 23) {
                 setMode("sleep")
