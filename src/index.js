@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import ScoringMode from "./Components/ScoringMode";
 import MediaMode from "./Components/MediaMode";
 import config from "../config.js";
+import LogoMode from "./Components/LogoMode";
 
 const {ipcRenderer} = window.require("electron");
 
@@ -30,6 +31,10 @@ const App = () => {
             if (data.Mode === 9) {
                 setMode("scoring");
                 setGameState(data || {}); // Assuming the data for scoring mode contains a 'gameState' property
+            } else if (data.Mode === 22) {
+                setMode("logo");
+            } else if (data.Mode === 23) {
+                setMode("sleep")
             } else {
                 let mediaArray = [];
                 setMediaMode(false);
@@ -140,13 +145,16 @@ const App = () => {
 
     return (
         <>
-          {mode === "scoring" &&
+            {mode === "scoring" &&
                 <ScoringMode gameState={gameState}/>
             }
 
             {mode === "media" &&
                 <MediaMode mediaState={mediaState} mediaMode={mediaMode}/>
             }
+            {mode === "logo" && <LogoMode/>
+            }
+            {mode === "sleep" && <></>}
             {mode === "" && <div>Waiting for data...</div>}
             {/*<ScoringMode gameState={gameState}/>*/}
         </>

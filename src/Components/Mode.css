@@ -118,3 +118,18 @@
 .led {
     animation: blink 1s infinite;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.logo {
+    width: 75%;
+    max-width: 100%; /* To ensure it doesn't overflow its container */
+    height: auto; /* To maintain the image aspect ratio */
+    display: block; /* Images are inline by default, setting it to block */
+}
+
