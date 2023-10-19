@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './Mode.css';
 
 const MediaMode = ({mediaState, mediaMode}) => {
     const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+    const videoRef = useRef(null);
 
     useEffect(() => {
         if (!Array.isArray(mediaState) || mediaState.length === 0) {
@@ -22,7 +23,14 @@ const MediaMode = ({mediaState, mediaMode}) => {
             setCurrentMediaIndex((currentMediaIndex + 1) % mediaState.length);
         }, duration);
 
-        return () => clearTimeout(timer);
+        return () => {
+            if (videoRef.current) {
+                videoRef.current.pause(); // Pause the video
+                videoRef.current.src = ""; // Release the video resource
+                videoRef.current.onended = null; // Remove the onEnded listener
+            }
+            clearTimeout(timer); // Clear the timeout if it exists
+        };
     }, [currentMediaIndex, mediaState]);
 
     if (!Array.isArray(mediaState) || mediaState.length === 0 || !mediaState[currentMediaIndex]) {
@@ -40,6 +48,7 @@ const MediaMode = ({mediaState, mediaMode}) => {
                 mediaMode ?
                     <video
                         src={"../../Frontend/build" + mediaPath}
+                        ref={videoRef}
                         style={{width: "512px", height: "256px"}}
                         autoPlay
                         preload={"auto"}
