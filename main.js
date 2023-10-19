@@ -83,7 +83,7 @@ function createWindows() {
             client.on("data", (data) => {
                 dataBuffer += data.toString();
                 if (dataBuffer.endsWith("\n")) {
-                    console.log("Raw gameState", dataBuffer); // Log raw data here
+                    // console.log("Raw gameState", dataBuffer); // Log raw data here
                     try {
                         const jsonData = JSON.parse(data.toString());
                         handleData(jsonData);
